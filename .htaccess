@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+		Options -MultiViews
+	</IfModule>
+
+	RewriteEngine On
+	RewriteBase /
+
+	# redirect to public folder
+	# R=301 => redirect permanent
+	# R or R=302 => redirect temporary default
+	RewriteRule ^(.*)$ base-hybrid/project-web-app-framework-base/public$1 [L,R=302,QSA]
+</IfModule>
