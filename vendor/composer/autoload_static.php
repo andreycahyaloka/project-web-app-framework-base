@@ -44,6 +44,7 @@ class ComposerStaticInit1b0581fe84bd48bb8a57071328af034f
     public static $classMap = array (
         'app\\controllers\\AdminController\\Users' => __DIR__ . '/../..' . '/app/controllers/AdminController/Users.php',
         'app\\controllers\\GuestController\\Agecalcs' => __DIR__ . '/../..' . '/app/controllers/GuestController/Agecalcs.php',
+        'app\\controllers\\GuestController\\Matdescols' => __DIR__ . '/../..' . '/app/controllers/GuestController/Matdescols.php',
         'app\\controllers\\GuestController\\Pwgens' => __DIR__ . '/../..' . '/app/controllers/GuestController/Pwgens.php',
         'app\\controllers\\GuestController\\Strrevs' => __DIR__ . '/../..' . '/app/controllers/GuestController/Strrevs.php',
         'app\\controllers\\Guests' => __DIR__ . '/../..' . '/app/controllers/Guests.php',

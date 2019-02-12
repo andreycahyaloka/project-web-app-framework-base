@@ -1,4 +1,13 @@
 {
+	"name": "skythyx/project-web-app-framework-base",
+	"description": "php framework native",
+	"type": "project",
+	"authors": [
+		{
+			"name": "andreycahyaloka",
+			"email": "cyberdolls619@gmail.com"
+		}
+	],
 	"require": {
 		"php": ">7.0.0"
 	},
