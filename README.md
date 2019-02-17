@@ -4,11 +4,11 @@
 	- mvc
 	- route
 	- config
-	- classes
 	- error & exception handler
 	- logs
-	- .htaccess
 	- template engine native
+	- classes
+	- .htaccess
 	- composer.json
 	- favicon.ico
 - password generator
