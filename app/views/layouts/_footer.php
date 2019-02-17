@@ -9,7 +9,7 @@
 		<p>
 			2017-<?php echo date('Y'); ?>
 		</p>
-		<p>
+		<p class="footer-copyright">
 			copyright&copy; andrey cahyaloka
 		</p>
 	</div>

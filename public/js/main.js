@@ -44,24 +44,17 @@
 				var tabsButtonId = $(this).attr('id');
 
 				// get all tabs-button from this tabs-container
-				var tabsButtons = $(this).parents('div.main-tabs-container').find('div.tabs-button button');
+				var tabsButtons = $(this).parents('div.main-tabs-container').find('div.tabs-button').children('button');
 
 				// get tabs-content with id = tabs-button id from this tabs-container
-				var tabsContent = $(this).parents('div.main-tabs-container').find('div.tabs-content div#'+tabsButtonId);
+				var tabsContent = $(this).parents('div.main-tabs-container').find('div.tabs-content').children('div#'+tabsButtonId);
 
 				// get all tabs-content from this tabs-container
-				var tabsContents = $(this).parents('div.main-tabs-container').find('div.tabs-content div').siblings().attr('style', 'color: red !important');;
-
-				console.log(tabsContents);
+				var tabsContents = $(this).parents('div.main-tabs-container').find('div.tabs-content').children('div');
 
 				var tabsOutput = new myTabsOutputFunction(tabsButton, tabsButtons, tabsContent, tabsContents);
 				return tabsOutput;
 			});
-
-		// fuck
-			var fuck = $('div.fuck-container').find('div.fuck-parent').children('div').children('div').addClass('fuck');
-
-			console.log(fuck);
 	});
 
 /**

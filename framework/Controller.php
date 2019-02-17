@@ -37,7 +37,7 @@ abstract class Controller {
 		}
 		else {
 			// throw error exception
-			throw new \Exception('Action method "' . $method . '" (in Controller class "' . get_class($this) . '") not found.');
+			throw new \Exception('Action method "' . $method . '" (in Controller class "' . get_class($this) . '") not found.', 404);
 		}
 	}
 

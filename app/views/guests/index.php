@@ -11,6 +11,7 @@
 	</ul>
 
 <main class="main-container" id="myMainContainer">
+
 	<div class="main-panel-container">
 		<div class="panel-title">flexbox & button</div>
 		<div class="panel-content">
@@ -106,50 +107,64 @@
 						</select>
 						<label>text read only</label>
 						<input type="text" readonly />
-						<div class="radio-container-row">
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 1</span>
-							</div>
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 2</span>
-							</div>
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 3</span>
-							</div>
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 4 radio radio radio radio radio radio radio radio radio</span>
-							</div>
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 5</span>
-							</div>
-							<div class="radio-content">
-								<input type="radio" name="radio1" /><span>radio row 6</span>
-							</div>
+						<div class="radio-container">
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 1</span>
+							</label>
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 2</span>
+							</label>
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 3</span>
+							</label>
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 4 radio radio radio radio radio radio radio radio radio</span>
+							</label>
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 5</span>
+							</label>
+							<label class="radio-content">
+								<input type="radio" name="radio1" />
+								<span>radio row 6</span>
+							</label>
 						</div>
-						<div class="checkbox-container-column">
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 1</span>
-							</div>
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 2</span>
-							</div>
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 3</span>
-							</div>
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 4 checkbox checkbox checkbox checkbox checkbox checkbox</span>
-							</div>
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 5</span>
-							</div>
-							<div class="checkbox-content">
-								<input type="checkbox" name="checkbox1" /><span>checkbox column 6</span>
-							</div>
+						<div class="checkbox-container">
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" />
+								<span>checkbox column 1</span>
+							</label>
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" checked="checked" />
+								<span>checkbox column 2</span>
+							</label>
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" />
+								<span>checkbox column 3</span>
+							</label>
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" />
+								<span>checkbox column 4 checkbox checkbox checkbox checkbox checkbox checkbox</span>
+							</label>
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" />
+								<span>checkbox column 5</span>
+							</label>
+							<label class="checkbox-content">
+								<input type="checkbox" name="checkbox1" />
+								<span>checkbox column 6</span>
+							</label>
 						</div>
-						<input type="reset" class="main-button btn-primary-normal" />
-						<input type="submit" class="main-button btn-primary-flat" formaction="/about" formmethod="POST" form="myForm1" value="submit1" />
-						<input type="button" class="main-button" value="button1" />
-						<input type="button" value="button2" />
+						<div class="form-body-button main-flexbox-container flex-row-between-top flex-wrap">
+							<input type="reset" class="flex-content-none main-button btn-primary-normal" />
+							<input type="submit" class="flex-content-none main-button btn-primary-flat" formaction="/about" formmethod="POST" form="myForm1" value="submit1" />
+							<input type="button" class="flex-content-none main-button" value="button1" />
+							<input type="button" value="button2" />
+						</div>
 						<div class="form-footer">
 							<div class="main-flexbox-container flex-row-between-top flex-wrap">
 								<button class="main-button btn-primary-flat flex-content-none">button1</button>
@@ -259,8 +274,12 @@
 						<p class="quote-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 						<p class="quote-name">~ Lorem ipsum dolor sit amet</p>
 					</div>
-					<div class="main-flexbox-container flex-row-right-top flex-wrap">
-						<button class="main-button btn-primary-flat flex-content-none">button1</button>
+					<div class="card-body-button main-flexbox-container flex-row-between-top flex-wrap">
+						<button class="main-button btn-primary-normal flex-content-none">button1</button>
+						<div class="flex-content-none main-flexbox-container flex-row-between-top flex-wrap">
+							<button class="main-button btn-secondary-flat flex-content-none">button2</button>
+							<button class="main-button btn-primary-flat flex-content-none">button3</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -351,7 +370,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-image-normal">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-normal" />
+				<img src="../public/img/img_bg.jpg" alt="image" class="img-square" />
 			</div>
 			<!--  -->
 		</div>
@@ -706,7 +725,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-tabs-container tabs-horizontal">
-				<div class="main-flex-container flex-row-left-top flex-wrap tabs-button">
+				<div class="main-flexbox-container flex-row-left-top flex-nowrap tabs-button">
 					<button class="flex-content-grow active" id="myTabsOne">tab 1</button>
 					<button class="flex-content-grow" id="myTabsTwo">tab 2</button>
 					<button class="flex-content-grow" id="myTabsThree">tab 3</button>
@@ -766,6 +785,20 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 					<button class="active" id="myTabsAaa">tab 1</button>
 					<button id="myTabsBbb">tab 2</button>
 					<button id="myTabsCcc">tab 3</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
+					<button id="myTabsXxx">tab xxx</button>
 				</div>
 				<div class="tabs-content">
 					<div class="active" id="myTabsAaa">
@@ -868,23 +901,6 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<a href="#" class="main-button flex-content-none main-margin-3">link</a>
 		<a href="#" class="main-button btn-primary-flat flex-content-none main-margin-3">link</a>
 		<!--  -->
-	</div>
-
-	<hr />
-
-	<div class="fuck-container">
-		<div class="fuck-parent">
-			<div class="one">
-				<p>div one</p>
-				<div class="two">
-					<p>div two</p>
-				</div>
-			</div>
-			<div class="one">
-				<p>div one</p>
-			</div>
-		</div>
-		
 	</div>
 
 </main>

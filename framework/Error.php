@@ -38,6 +38,8 @@ class Error {
 		// 500 - general error
 		$code = $exception->getCode();
 
+		// var_dump($code);
+
 		if ($code != 404) {
 			$code = 500;
 		}

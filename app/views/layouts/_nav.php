@@ -23,15 +23,9 @@
 
 <div class="main-navlink-container">
 	<div class="navlink-content">
-		<a href="">Home</a>
-	</div>
-	<div class="navlink-content">
-		<a href="about">About</a>
-	</div>
-	<div class="navlink-content">
-		<a href="x">404</a>
-	</div>
-	<div class="navlink-content active">
-		<a href="javascript:void(0);">Test</a>
+		<a href=""><i class="fas fa-home fa-fw"></i>home</a>
+		<a href="about"><i class="fas fa-users fa-fw"></i>about</a>
+		<a href="x"><i class="fas fa-code fa-fw"></i>404</a>
+		<a class="active" href="javascript:void(0);"><i class="fas fa-sync fa-fw fa-pulse"></i>test</a>
 	</div>
 </div>

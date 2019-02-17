@@ -9,7 +9,7 @@
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-tabs-container tabs-horizontal">
-				<div class="main-flexbox-container flex-row-left-top flex-wrap tabs-button">
+				<div class="main-flexbox-container flex-row-left-top flex-nowrap tabs-button">
 					<button class="flex-content-grow active" id="myTabsRed">red</button>
 					<button class="flex-content-grow" id="myTabsPink">pink</button>
 					<button class="flex-content-grow" id="myTabsPurple">purple</button>
@@ -45,40 +45,96 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>50</td>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">50</td>
 										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">100</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">200</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">300</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">400</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">500</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">600</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">700</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="
+											font-weight:bold!important;
+											color:#212121!important;
+											background-color:#fafafa!important;">800</td>
+										<td>#fafafa</td>
+										<td>25,25,25</td>
+									</tr>
+									<tr>
+										<td style="font-weight:bold!important;
+											color:#fafafa!important;
+											background-color:#212121!important;">900</td>
+										<td>#212121</td>
 										<td>25,25,25</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						<p>ok</p>
 					</div>
 					<div id="myTabsPink">
 						<h3>pink</h3>
 						<div class="main-image-thumbnail">
 							<img src="../public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
 						</div>
-						<button>okk</button>
 					</div>
 				</div>
 				
-			</div>
-
-			<div class="main-image-thumbnail">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
-			</div>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="main-panel-container">
-		<div class="panel-title">image thumbnail</div>
-		<div class="panel-content">
-			<!--  -->
-			<div class="main-image-thumbnail">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
 			</div>
 			<!--  -->
 		</div>

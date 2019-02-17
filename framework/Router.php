@@ -113,12 +113,12 @@ class Router {
 				}
 				else {
 					// throw error exception
-					throw new \Exception('Action method "' . $action . '" (in Controller class "' . $controller . '") not found.');
+					throw new \Exception('Action method "' . $action . '" (in Controller class "' . $controller . '") not found.', 404);
 				}
 			}
 			else {
 				// throw error exception
-				throw new \Exception('Controller class "' . $controller . '" not found.');
+				throw new \Exception('Controller class "' . $controller . '" not found.', 404);
 			}
 		}
 		else {
