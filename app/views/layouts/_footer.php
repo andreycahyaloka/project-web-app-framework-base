@@ -14,7 +14,7 @@
 		</p>
 	</div>
 	<div class="footer-footer">
-		<a href="../public/favicon.ico">terms</a>
+		<a href="./favicon.ico">terms</a>
 		<a href="favicon.ico">privacy</a>
 		<a href="#">disclaimers</a>
 		<a href="#">about</a>

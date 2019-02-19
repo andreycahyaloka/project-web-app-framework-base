@@ -201,6 +201,9 @@ class Router {
 		// remove "<>& and characters with ASCII value below 32
 		$url = filter_var($url,FILTER_SANITIZE_SPECIAL_CHARS);
 
+		// remove slash trails
+		// $url = rtrim($url, '/');
+
 		return $url;
 	}
 

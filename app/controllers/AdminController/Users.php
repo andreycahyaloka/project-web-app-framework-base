@@ -28,4 +28,13 @@ class Users extends \framework\Controller {
 	public function indexAction() {
 		echo 'controller "users" action "index"';
 	}
+
+	/**
+	 * about
+	 * 
+	 * @return void
+	 */
+	public function aboutAction() {
+		echo 'controller "users" action "about"';
+	}
 }

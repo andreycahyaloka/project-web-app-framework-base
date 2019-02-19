@@ -48,49 +48,49 @@
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">50</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#ffebee!important;">50</td>
+										<td>#ffebee</td>
+										<td>255, 235, 238</td>
 									</tr>
 									<tr>
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">100</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#ffcdd2!important;">100</td>
+										<td>#ffcdd2</td>
+										<td>255, 205, 210</td>
 									</tr>
 									<tr>
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">200</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#ef9a9a!important;">200</td>
+										<td>#ef9a9a</td>
+										<td>239, 154, 154</td>
 									</tr>
 									<tr>
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">300</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#e57373!important;">300</td>
+										<td>#e57373</td>
+										<td>229, 115, 115</td>
 									</tr>
 									<tr>
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">400</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#ef5350!important;">400</td>
+										<td>#ef5350</td>
+										<td>239, 83, 80</td>
 									</tr>
 									<tr>
 										<td style="
 											font-weight:bold!important;
 											color:#212121!important;
-											background-color:#fafafa!important;">500</td>
-										<td>#fafafa</td>
-										<td>25,25,25</td>
+											background-color:#f44336!important;">500</td>
+										<td>#f44336</td>
+										<td>244, 67, 54</td>
 									</tr>
 									<tr>
 										<td style="
@@ -129,9 +129,6 @@
 					</div>
 					<div id="myTabsPink">
 						<h3>pink</h3>
-						<div class="main-image-thumbnail">
-							<img src="../public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
-						</div>
 					</div>
 				</div>
 				

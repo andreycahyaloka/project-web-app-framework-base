@@ -96,6 +96,7 @@ class Pwgens extends Controller {
 	 */
 	public function pwgenAjaxAction() {
 		$pwgens = $this->pwgenPrepareAction();
+		// var_dump($pwgens);
 
 		try {
 			echo json_encode($pwgens);

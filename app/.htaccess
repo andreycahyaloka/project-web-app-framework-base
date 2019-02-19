@@ -1,8 +1,0 @@
-<IfModule mod_rewrite.c>
-	# restrict folder and file access, if hasn't file index
-	# Options -Indexes
-
-	# custom error pages
-	# forbidden
-	# ErrorDocument 403 /folder/403.php
-</IfModule>

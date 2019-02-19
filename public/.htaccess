@@ -1,18 +1,17 @@
-<IfModule mod_rewrite.c>
-	<IfModule mod_negotiation.c>
-		Options -Indexes -MultiViews
-	</IfModule>
+# <IfModule mod_rewrites.c>
+	# <IfModule mod_negotiation.c>
+		# Options -Indexes -MultiViews
+	# </IfModule>
 
-	RewriteEngine On
-	# RewriteBase /
+	# RewriteEngine On
 
-	# block folder access from url
-	RewriteCond %{REQUEST_FILENAME} !-d
+	### block folder access from url
+	# RewriteCond %{REQUEST_FILENAME} !-d
 
-	# block file access from url
-	RewriteCond %{REQUEST_FILENAME} !-f
+	### block file access from url
+	# RewriteCond %{REQUEST_FILENAME} !-f
 
-	# rule for url
-	# remove index.php? from url
-	RewriteRule ^(.*)$ index.php?$1 [L,QSA]
-</IfModule>
+	### rule for url
+	### remove index.php? from url
+	# RewriteRule ^(.*)$ index0?$1 [L,QSA]
+# </IfModule>

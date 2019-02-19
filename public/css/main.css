@@ -1274,7 +1274,7 @@ h2 {
 }
 	.main-table-container > .table-content {
 		width: 100% !important;
-		border: 3px solid rgba(var(--color-grey-300), 1) !important;
+		border: 3px solid rgba(var(--color-normal), 1) !important;
 		border-collapse: collapse !important;
 	}
 	.main-table-container > .table-content * {
@@ -1292,29 +1292,39 @@ h2 {
 	}
 	.main-table-container > .table-content th,
 	.main-table-container > .table-content td {
+		min-width: 60px !important;
 		padding: 12px !important;
 		text-align: left !important;
 	}
 	.main-table-container > .table-content tr:nth-child(even) {
 		background-color: rgba(var(--color-grey-200), 1) !important;
 	}
-	.main-table-container > .table-content tr {
+	.main-table-container > .table-content tr > th {
+		border-bottom: 3px solid rgba(var(--color-normal), 1) !important;
+	}
+	.main-table-container > .table-content tr > td {
 		border-bottom: 1px solid rgba(var(--color-grey-300), 1) !important;
 	}
 	.main-table-container > .table-content tr:hover {
 		background-color: rgba(var(--color-grey-300), 1) !important;
 	}
-	/* <table id="myTableCustom"></table> */
-	.main-table-container > .table-content#myTableCustom1 {
-		border-color: rgba(var(--color-normal), 1) !important;
+	.main-table-container > .table-content > tfoot th {
+		padding: 6px 12px !important;
 	}
+	/* <table id="myTableCustom1"></table> */
 	.main-table-container > .table-content#myTableCustom1 th,
 	.main-table-container > .table-content#myTableCustom1 td {
-		padding: 6px 12px !important;
+		padding: 6px !important;
 		border: 1px solid rgba(var(--color-light), 1) !important;
+	}
+	.main-table-container > .table-content#myTableCustom1 tr:nth-child(even) {
+		background-color: rgba(var(--color-grey-200), 1) !important;
 	}
 	.main-table-container > .table-content#myTableCustom1 tr:nth-child(odd) {
 		background-color: rgba(var(--color-grey-300), 1) !important;
+	}
+	.main-table-container > .table-content#myTableCustom1 tr:hover {
+		background-color: rgba(var(--color-grey-400), 1) !important;
 	}
 
 /* card */
@@ -1877,7 +1887,7 @@ h2 {
 			text-transform: uppercase !important;
 			letter-spacing: 3px !important;
 			line-height: 1.8 !important;
-			color: rgba(var(--color-grey-700), 1) !important;
+			color: rgba(var(--color-normal), 1) !important;
 		}
 		.footer-body > .footer-copyright {
 			text-transform: lowercase !important;
@@ -1898,21 +1908,22 @@ h2 {
 
 /* error pages */
 .main-error-container {
-	background: linear-gradient(to bottom, rgba(var(--color-secondary-light), 0.25), rgba(var(--color-primary-light), 0.25)) !important;
+	background: linear-gradient(to bottom, rgba(var(--color-secondary-light), 0.25), rgba(var(--color-secondary-normal), 0.25)) !important;
 }
 	.main-error-container * {
 		text-align: center !important;
-		color: rgba(var(--color-grey-700), 1) !important;
+		color: rgba(var(--color-light), 1) !important;
 	}
 	.main-error-container > .error-message {
 		margin: 24px !important;
-		padding: 12px !important;
-		border: 1px solid !important;
+		padding: 24px !important;
+		border: 3px solid !important;
 		border-radius: 3px !important;
-		background-color: rgba(var(--color-light), 0.25) !important;
+		background-color: rgba(var(--color-normal), 0.25) !important;
 	}
 		.main-error-container > .error-message > p {
 			font-size: 18px !important;
+			/* font-weight: bold !important; */
 			text-transform: capitalize !important;
 			letter-spacing: 3px !important;
 			line-height: 1.5 !important;
@@ -1927,7 +1938,7 @@ h2 {
 /* panel */
 .main-panel-container {
 	max-width: 100% !important;
-	margin: 12px !important;
+	margin: 36px 12px !important;
 	padding: 12px !important;
 	border: 3px solid rgba(var(--color-grey-700), 1) !important;
 	border-radius: 3px !important;
@@ -2014,9 +2025,9 @@ h2 {
 	body .main-container {
 		width: 75% !important;
 		min-width: 768px !important;
-		border: 1px solid rgba(var(--color-normal), 1) !important;
-		box-shadow: var(--elevation_shadow-6) !important;
-			-webkit-box-shadow: var(--elevation_shadow-6) !important;
+		/* border: 1px solid transparent !important; */
+		box-shadow: var(--elevation_shadow-3) !important;
+			-webkit-box-shadow: var(--elevation_shadow-3) !important;
 	}
 
 	/* footer */
@@ -2033,9 +2044,8 @@ h2 {
 	body .main-container {
 		width: 50% !important;
 		min-width: 768px !important;
-		border: 1px solid rgba(var(--color-normal), 1) !important;
-		box-shadow: var(--elevation_shadow-6) !important;
-			-webkit-box-shadow: var(--elevation_shadow-6) !important;
+		box-shadow: var(--elevation_shadow-3) !important;
+			-webkit-box-shadow: var(--elevation_shadow-3) !important;
 	}
 
 	/* footer */

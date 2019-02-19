@@ -24,8 +24,22 @@
 			})
 	});
 
+// get base url for ajax
+function getBaseUrl() {
+	var pathArray = location.href.split('/');
+	var protocol = pathArray[0];
+	var host = pathArray[2];
+	var url = protocol + '//' + host + '/';
+	
+	return url;
+}
+
 // password generator ajax
 	function pwgenAjax() {
+		console.log(getBaseUrl());
+		// var baseUrl = $('head base').attr('href');
+		// var baseUrl1 = $(document.body).data('base');
+		// console.log(baseUrl1 + ' fuck');
 		var myFormPwgen = $('form#myFormPwgen').serializeArray();
 		// var myPwgenLength = $('input#myPwgenLength').val();
 		// console.log(myFormPwgen);
@@ -44,9 +58,12 @@
 			$('label#myPwgenOutputLabel').text('loading...');
 
 			$.ajax( {
-				url: 'pwgenajax',
+				url: './pwgenajax',
 				method: 'POST',
 				data: myFormPwgen,
+				// beforeSend: function(jqXHR, settings) {
+				// 	document.write(settings.url);
+				// },
 				dataType: 'JSON',
 				// set timeout 12 sec (in miliseconds)
 				timeout: 12000,
@@ -69,8 +86,14 @@
 				$('label#myPwgenOutputLabel').text('result:');
 				$('input#myPwgenOutput').val(responseData.pwgenOutputs);
 			})
-			.fail(function () {
+			.fail(function (XMLHttpRequest, textStatus, errorThrown) {
 				console.log('pwgen ajax failed!');
+				console.log(XMLHttpRequest);
+				console.log(XMLHttpRequest.statusText);
+				console.log(XMLHttpRequest.responseText);
+				console.log(XMLHttpRequest.responseJSON);
+				console.log(textStatus);
+				console.log(errorThrown);
 			});
 		// }
 	}
@@ -84,7 +107,7 @@
 		$('label#myAgecalcOutputLabel').text('loading...');
 
 		$.ajax( {
-			url: 'agecalcajax',
+			url: './agecalcajax',
 			method: 'POST',
 			data: myFormAgecalc,
 			dataType: 'JSON',
@@ -114,7 +137,7 @@
 		$('label#myStrrevOutputLabel').text('loading...');
 
 		$.ajax( {
-			url: 'strrevajax',
+			url: './strrevajax',
 			method: 'POST',
 			data: myFormStrrev,
 			dataType: 'JSON',

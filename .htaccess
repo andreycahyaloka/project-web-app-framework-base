@@ -1,13 +1,49 @@
-<IfModule mod_rewrite.c>
-	<IfModule mod_negotiation.c>
-		Options -MultiViews
-	</IfModule>
+# <IfModule mod_rewrite.c>
+	# <IfModule mod_negotiation.c>
+		# Options -MultiViews
+	# </IfModule>
 
-	RewriteEngine On
-	RewriteBase /
+	# RewriteEngine On
+	# RewriteBase /
 
 	# redirect to public folder
 	# R=301 => redirect permanent
 	# R or R=302 => redirect temporary default
-	RewriteRule ^(.*)$ base-hybrid/project-web-app-framework-base/public$1 [L,R=302,QSA]
+	# RewriteRule ^(.*)$ base-hybrid/project-web-app-framework-base/public$1 [L,R=302,QSA]
+# </IfModule>
+
+
+
+
+
+<IfModule mod_rewrite.c>
+	<IfModule mod_negotiation.c>
+		### -Indexes
+			### Disable Directory Listings in this Directory and Subdirectories
+			### This will hide the files from the public unless they know direct URLs
+			### restrict folder and file access, if hasn't file index
+		Options -Indexes -MultiViews
+	</IfModule>
+
+	RewriteEngine On
+	RewriteBase /base-hybrid/project-web-app-framework-base/
+
+	### alternative index files
+	DirectoryIndex index.php index.html index2.html
+
+	### custom error pages
+	### forbidden
+		### ErrorDocument 403 /folder/403.php
+	### not-found
+		### ErrorDocument 404 /folder/404.php
+
+	### block folder access from url
+	# RewriteCond %{REQUEST_FILENAME} !-d
+
+	### block file access from url
+	RewriteCond %{REQUEST_FILENAME} !-f
+
+	### rule for url
+	### remove index.php? from url
+	RewriteRule ^(.*)$ public/index.php?$1 [L,QSA]
 </IfModule>

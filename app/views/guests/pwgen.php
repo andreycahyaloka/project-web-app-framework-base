@@ -11,7 +11,7 @@
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-form-container">
-				<form action="pwgen" method="POST" id="myFormPwgen">
+				<form action="./pwgen" method="POST" id="myFormPwgen">
 					<fieldset>
 						<legend>password generator</legend>
 						<label>password length</label>

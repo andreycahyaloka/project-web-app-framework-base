@@ -2,13 +2,13 @@
 	<title>Index</title>
 <?php include dirname(__DIR__) . '/layouts/_base-middle.php'; ?>
 
-	<p>hello <?php echo htmlspecialchars($name); ?>!</p>
+	<!-- <p>hello <?php echo htmlspecialchars($name); ?>!</p> -->
 
-	<ul>
-		<?php foreach ($colors as $color): ?>
-			<li><?php echo htmlspecialchars($color); ?></li>
-		<?php endforeach; ?>
-	</ul>
+	<!-- <ul> -->
+		<!-- <?php foreach ($colors as $color): ?> -->
+			<!-- <li><?php echo htmlspecialchars($color); ?></li> -->
+		<!-- <?php endforeach; ?> -->
+	<!-- </ul> -->
 
 <main class="main-container" id="myMainContainer">
 
@@ -217,7 +217,7 @@
 						<p>card header title</p>
 					</div>
 					<div class="card-header-image">
-						<img src="../public/img/img_bg.jpg" alt="card header image" />
+						<img src="./public/img/img_bg.jpg" alt="card header image" />
 						<p>card image title card image title card image title card image title card image title</p>
 					</div>
 				</div>
@@ -265,7 +265,7 @@
 			<div class="main-card-container">
 				<div class="card-header">
 					<div class="card-header-image">
-						<img src="../public/img/img_bg.jpg" alt="card header image" />
+						<img src="./public/img/img_bg.jpg" alt="card header image" />
 						<p>card image title</p>
 					</div>
 				</div>
@@ -370,7 +370,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-image-normal">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-square" />
+				<img src="./public/img/img_bg.jpg" alt="image" class="img-square" />
 			</div>
 			<!--  -->
 		</div>
@@ -383,7 +383,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-image-normal">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-round" />
+				<img src="./public/img/img_bg.jpg" alt="image" class="img-round" />
 			</div>
 			<!--  -->
 		</div>
@@ -396,7 +396,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-image-normal">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-circle" />
+				<img src="./public/img/img_bg.jpg" alt="image" class="img-circle" />
 			</div>
 			<!--  -->
 		</div>
@@ -409,7 +409,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-image-thumbnail">
-				<img src="../public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
+				<img src="./public/img/img_bg.jpg" alt="image" class="img-thumbnail" />
 			</div>
 			<!--  -->
 		</div>
@@ -855,7 +855,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 		<div class="main-card-container flex-content-auto main-min_width-50 main-max_width-75 main-margin-12">
 			<div class="card-header">
 				<div class="card-header-image">
-					<img src="../public/img/img_bg.jpg" alt="card header image" />
+					<img src="./public/img/img_bg.jpg" alt="card header image" />
 					<p>card image title</p>
 				</div>
 			</div>
