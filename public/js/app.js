@@ -21,22 +21,30 @@
 				event.preventDefault();
 
 				strrevAjax();
-			})
+			});
+
+		// form signup - jquery-validation
+			$('button#myButtonSignupOutput').click(function () {
+				formSignupValidation();
+			});
 	});
 
+/**
+ * function
+ */
 // get base url for ajax
-function getBaseUrl() {
-	var pathArray = location.href.split('/');
-	var protocol = pathArray[0];
-	var host = pathArray[2];
-	var url = protocol + '//' + host + '/';
-	
-	return url;
-}
+	function getBaseUrl() {
+		var pathArray = location.href.split('/');
+		var protocol = pathArray[0];
+		var host = pathArray[2];
+		var url = protocol + '//' + host + '/';
+		
+		return url;
+	}
 
 // password generator ajax
 	function pwgenAjax() {
-		console.log(getBaseUrl());
+		// console.log(getBaseUrl());
 		// var baseUrl = $('head base').attr('href');
 		// var baseUrl1 = $(document.body).data('base');
 		// console.log(baseUrl1 + ' fuck');
@@ -155,5 +163,56 @@ function getBaseUrl() {
 		})
 		.fail(function () {
 			console.log('strrev ajax failed!');
+		});
+	}
+
+// form signup jquery-validation
+	function formSignupValidation() {
+		// jquery-validation addmethod (regex)
+		$.validator.addMethod('validPassword',
+			function (value, element, param) {
+				if (value != '') {
+					if (value.match(/.*[a-z]+.*/i) == null) {
+						return false;
+					}
+					if (value.match(/.*\d+.*/) == null) {
+						return false;
+					}
+				}
+				return true;
+			},
+			'Must contain at least one letter and one number.'
+		);
+
+		// jquery-validation rules call element-name
+		$('form#myFormSignup').validate( {
+			rules: {
+				'signupName': 'required',
+				'signupEmail': {
+					required: true,
+					email: true,
+					// ajax route to validate email exists
+					remote: './validateemailajax'
+				},
+				'signupPassword': {
+					required: true,
+					minlength: 6,
+					validPassword: true
+				},
+				'signupConfirmPassword': {
+					equalTo: 'input#mySignupPassword'
+				}
+			},
+			messages: {
+				'signupEmail': {
+					remote: 'email already exists.'
+				},
+				'signupPassword': {
+					required: 'password can\'t be blank.',
+					minlength: jQuery.validator.format("min {0} characters."),
+					rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long.")
+				}
+			},
+			// wrapper: 'small'
 		});
 	}

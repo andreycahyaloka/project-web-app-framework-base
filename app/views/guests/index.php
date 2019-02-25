@@ -10,6 +10,10 @@
 		<!-- <?php endforeach; ?> -->
 	<!-- </ul> -->
 
+	<!-- <?php echo config\Config::BASE_URL; ?> -->
+	<!-- <br /> -->
+	<!-- <?php echo password_hash('secret', PASSWORD_DEFAULT); ?> -->
+
 <main class="main-container" id="myMainContainer">
 
 	<div class="main-panel-container">

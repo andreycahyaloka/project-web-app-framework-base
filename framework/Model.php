@@ -19,7 +19,7 @@ abstract class Model {
 
 		if ($db === null) {
 			$dsn = 'mysql:host=' . Config::DB_HOST .
-				';dbname=' . Config::DB_DBNAME .
+				';dbname=' . Config::DB_NAME .
 				';charset=' . Config::DB_CHARSET . ';';
 			
 			$db = new PDO($dsn,

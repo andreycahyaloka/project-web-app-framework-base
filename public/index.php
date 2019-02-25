@@ -72,6 +72,24 @@ $router->add('', [
 // 	'action' => 'about'
 // ]);
 
+// users
+$router->add('signup', [
+	'controller' => 'users',
+	'action' => 'signup'
+]);
+$router->add('store', [
+	'controller' => 'users',
+	'action' => 'store'
+]);
+$router->add('storesuccess', [
+	'controller' => 'users',
+	'action' => 'storeSuccess'
+]);
+$router->add('validateemailajax', [
+	'controller' => 'users',
+	'action' => 'validateEmailAjax'
+]);
+
 // password generator
 $router->add('pwgen', [
 	'controller' => 'pwgens',

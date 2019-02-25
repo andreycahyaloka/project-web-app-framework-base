@@ -4,6 +4,7 @@
 
 <!-- stylesheets -->
 <link rel="stylesheet" type="text/css" media="screen" href="./public/css/main.css" crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" media="screen" href="./public/css/app.css" crossorigin="anonymous" />
 
 <!-- custom -->
 <style>
