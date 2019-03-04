@@ -12,7 +12,11 @@
 
 	<!-- <?php echo config\Config::BASE_URL; ?> -->
 	<!-- <br /> -->
-	<!-- <?php echo password_hash('secret', PASSWORD_DEFAULT); ?> -->
+<?php
+	if (isset($_SESSION['user_id'])) {
+		echo $_SESSION['user_id'];
+	}
+?>
 
 <main class="main-container" id="myMainContainer">
 

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * PHP Framework
+ * PHP Framework Native
  * 
- * @package main PHP Framework
+ * @package main PHP Framework Native
  * @author Andrey Cahyaloka <cyberdolls@syghtarts.com>
  */
 
@@ -49,6 +49,11 @@ set_error_handler('framework\Error::errorHandler');
 set_exception_handler('framework\Error::exceptionHandler');
 
 /**
+ * sessions
+ */
+session_start();
+
+/**
  * register composer packages
  */
 // 
@@ -73,9 +78,9 @@ $router->add('', [
 // ]);
 
 // users
-$router->add('signup', [
+$router->add('register', [
 	'controller' => 'users',
-	'action' => 'signup'
+	'action' => 'register'
 ]);
 $router->add('store', [
 	'controller' => 'users',
@@ -88,6 +93,18 @@ $router->add('storesuccess', [
 $router->add('validateemailajax', [
 	'controller' => 'users',
 	'action' => 'validateEmailAjax'
+]);
+$router->add('loginform', [
+	'controller' => 'users',
+	'action' => 'loginform'
+]);
+$router->add('login', [
+	'controller' => 'users',
+	'action' => 'login'
+]);
+$router->add('logout', [
+	'controller' => 'users',
+	'action' => 'logout'
 ]);
 
 // password generator

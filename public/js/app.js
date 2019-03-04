@@ -23,9 +23,9 @@
 				strrevAjax();
 			});
 
-		// form signup - jquery-validation
-			$('button#myButtonSignupOutput').click(function () {
-				formSignupValidation();
+		// form register - jquery-validation
+			$('button#myButtonRegisterOutput').click(function () {
+				formRegisterValidation();
 			});
 	});
 
@@ -166,8 +166,8 @@
 		});
 	}
 
-// form signup jquery-validation
-	function formSignupValidation() {
+// form register jquery-validation
+	function formRegisterValidation() {
 		// jquery-validation addmethod (regex)
 		$.validator.addMethod('validPassword',
 			function (value, element, param) {
@@ -185,29 +185,26 @@
 		);
 
 		// jquery-validation rules call element-name
-		$('form#myFormSignup').validate( {
+		$('form#myFormRegister').validate( {
 			rules: {
-				'signupName': 'required',
-				'signupEmail': {
+				'registerName': 'required',
+				'registerEmail': {
 					required: true,
 					email: true,
 					// ajax route to validate email exists
 					remote: './validateemailajax'
 				},
-				'signupPassword': {
+				'inputPassword': {
 					required: true,
 					minlength: 6,
 					validPassword: true
-				},
-				'signupConfirmPassword': {
-					equalTo: 'input#mySignupPassword'
 				}
 			},
 			messages: {
-				'signupEmail': {
+				'registerEmail': {
 					remote: 'email already exists.'
 				},
-				'signupPassword': {
+				'inputPassword': {
 					required: 'password can\'t be blank.',
 					minlength: jQuery.validator.format("min {0} characters."),
 					rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long.")

@@ -8,7 +8,9 @@
 				<a href="./"><i class="fas fa-home fa-fw"></i>Home</a>
 				<a href="./about"><i class="fas fa-users fa-fw"></i>about</a>
 				<hr />
-				<a href="./signup"><i class="fas fa-user fa-fw"></i>sign up</a>
+				<a href="./register"><i class="fas fa-user fa-fw"></i>register</a>
+				<a href="./loginform"><i class="fas fa-sign-in-alt fa-fw"></i>login</a>
+				<a href="./logout"><i class="fas fa-sign-out-alt fa-fw"></i>logout</a>
 				<hr />
 				<a href="./pwgen"><i class="fas fa-link fa-fw"></i>password generator</a>
 				<a href="./agecalc"><i class="fas fa-link fa-fw"></i>age calculator</a>

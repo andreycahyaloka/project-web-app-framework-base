@@ -1072,6 +1072,8 @@ h2 {
 /* button */
 .main-button {
 	padding: 6px 12px !important;
+	text-align: center !important;
+	text-transform: uppercase !important;
 	border: 1px solid !important;
 	border-radius: 3px !important;
 	outline: none !important;
@@ -1985,27 +1987,27 @@ h2 {
 	/* flexbox content */
 	.main-flexbox-container .flex-content-none,
 	.main-flexbox-container .flex-content-grow {
-		/* flex: 1 1 auto !important; */
+		flex: 1 1 auto !important;
 	}
 
 	/* component width */
 	.main-width-50 {
-		/* width: 100% !important; */
+		width: 100% !important;
 	}
 	.main-width-75 {
-		/* width: 100% !important; */
+		width: 100% !important;
 	}
 	.main-min_width-50 {
-		/* min-width: 100% !important; */
+		min-width: 100% !important;
 	}
 	.main-min_width-75 {
-		/* min-width: 100% !important; */
+		min-width: 100% !important;
 	}
 	.main-max_width-50 {
-		/* max-width: 100% !important; */
+		max-width: 100% !important;
 	}
 	.main-max_width-75 {
-		/* max-width: 100% !important; */
+		max-width: 100% !important;
 	}
 
 	/* go to top */

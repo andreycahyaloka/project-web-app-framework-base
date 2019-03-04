@@ -12,17 +12,16 @@
 	- .htaccess
 	- composer.json
 	- favicon.ico
-	- form-validation
-- password generator
-- age calculator
-- string reverser
-
+	- form (validation, show hide password)
 - references
 	- roboto (font)
-
 - library
 	- font-awesome (icon)
 	- jquery
 	- jquery-validation
 	- jquery-validation (custom css)
 	- jquery-validation (ajax)
+- sub-classes
+	- password generator
+	- age calculator
+	- string reverser

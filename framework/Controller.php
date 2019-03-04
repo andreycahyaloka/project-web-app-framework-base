@@ -58,4 +58,15 @@ abstract class Controller {
 	protected function after() {
 		// 
 	}
+
+	/**
+	 * redirect to a different page
+	 * 
+	 * @param string $url - the relative url
+	 * @return void
+	 */
+	public function redirect($url) {
+		header('Location: ./' . $url, true, 303);
+		exit;
+	}
 }

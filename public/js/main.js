@@ -55,6 +55,25 @@
 				var tabsOutput = new myTabsOutputFunction(tabsButton, tabsButtons, tabsContent, tabsContents);
 				return tabsOutput;
 			});
+
+		// check show hide password
+			// click
+			$('input[type=checkbox]#myCheckPassword').click(function () {
+				var inputPassword = $(this).parents('form').find('input#myInputPassword');
+				var checkPassword = $(this).parents('form').find('input#myCheckPassword');
+
+				var showHidePasswordOutput = new myShowHidePasswordFunction(inputPassword, checkPassword);
+				return showHidePasswordOutput;
+			});
+
+			// hover
+			// $('input#myInputPassword').hover(
+			// 	function () {
+			// 		$(this).attr('type', 'text');
+			// 	},
+			// 	function () {
+			// 		$(this).attr('type', 'password');
+			// 	});
 	});
 
 /**
@@ -162,4 +181,14 @@
 			this.style.setProperty('width', '0%', 'important');
 			this.style.setProperty('opacity', '0', 'important');
 		});
+	}
+
+// show hide form password
+	function myShowHidePasswordFunction(inputPassword, checkPassword) {
+		if ((inputPassword.attr('type') == 'password') && (checkPassword.is(':checked'))) {
+			inputPassword.attr('type', 'text');
+		}
+		else {
+			inputPassword.attr('type', 'password');
+		}
 	}
