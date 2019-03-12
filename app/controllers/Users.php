@@ -5,6 +5,8 @@ namespace app\controllers;
 use framework\Controller;
 use framework\View;
 use app\models\User;
+use app\auth\Auth;
+use app\messages\Flash;
 
 /**
  * users controller
@@ -68,30 +70,34 @@ class Users extends Controller {
 	 * 
 	 * @return void
 	 */
-	public function loginFormAction() {
+	public function loginAction() {
 		View::render('users/login.php');
 	}
 
 	/**
-	 * login
+	 * login access
 	 * 
 	 * @return void
 	 */
-	public function loginAction() {
+	public function loginAccessAction() {
 		// echo ($_REQUEST['loginEmail'] . ', ' . $_REQUEST['inputPassword']);
 		$users = User::authenticate($_POST['loginEmail'], $_POST['inputPassword']);
 
 		if ($users) {
-			// regenerate session id on login
-			session_regenerate_id(true);
+			Auth::login($users);
 
-			// set user-id into session
-			$_SESSION['user_id'] = $users->id;
+			// add flash message after succesfully login
+			Flash::addMessage('Login successful.', Flash::SUCCESS);
 
-			// redirect after login
-			$this->redirect('');
+			// redirect after login to index
+			// $this->redirect('./');
+			// redirect after login to requested page
+			$this->redirect(Auth::getRequestedPage());
 		}
 		else {
+			// add flash message if failed login
+			Flash::addMessage('Login failed, please try again!', Flash::WARNING);
+
 			View::render('users/login.php', [
 				'emails' => $_POST['loginEmail']
 			]);
@@ -104,28 +110,25 @@ class Users extends Controller {
 	 * @return void
 	 */
 	public function logoutAction() {
-		// unset all of the session variables
-		$_SESSION = [];
+		Auth::logout();
 
-		// delete the session cookie
-		if (ini_get('session.use_cookies')) {
-			$params = session_get_cookie_params();
+		$this->redirect('./logoutmessage');
+	}
 
-			setcookie(
-				session_name(),
-				'',
-				time() - 42000,
-				$params['path'],
-				$params['domain'],
-				$params['secure'],
-				$params['httponly']
-			);
-		}
+	/**
+	 * show a 'logged out' flash message and redirect.
+	 * necessary to use the flash messages as they use they session
+	 * at the end of the logout method (logoutAction) the session is
+	 * destroyed. so a new action needs to be called in order to use
+	 * the session.
+	 * 
+	 * @return void
+	 */
+	public function LogoutMessageAction() {
+		// add flash message after logout
+		Flash::addMessage('Logout successful.', Flash::SUCCESS);
 
-		// destroy the session
-		session_destroy();
-
-		// redirect to index
-		$this->redirect('');
+		// redirect after logout to index
+		$this->redirect('./pwgen');
 	}
 }

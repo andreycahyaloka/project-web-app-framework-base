@@ -68,4 +68,12 @@ class Config {
 	 * @var boolean
 	 */
 	const SHOW_ERRORS = true;
+
+	/**
+	 * secret key for hash
+	 * 32 characters
+	 * 
+	 * @var boolean
+	 */
+	const SECRET_KEY = '3eylfm8OchNIdNo3D6K68ocCWOspBTIp';
 }

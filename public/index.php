@@ -14,6 +14,12 @@
 // echo '<br />' . '<br />';
 
 /**
+ * auth cookie
+ */
+// set auth timeout in seconds
+// ini_set('session.cookie_lifetime', 864000);
+
+/**
  * autoloader
  */
 // spl_autoload_register(function ($className) {
@@ -77,7 +83,7 @@ $router->add('', [
 // 	'action' => 'about'
 // ]);
 
-// users
+// guests
 $router->add('register', [
 	'controller' => 'users',
 	'action' => 'register'
@@ -94,17 +100,28 @@ $router->add('validateemailajax', [
 	'controller' => 'users',
 	'action' => 'validateEmailAjax'
 ]);
-$router->add('loginform', [
-	'controller' => 'users',
-	'action' => 'loginform'
-]);
 $router->add('login', [
 	'controller' => 'users',
 	'action' => 'login'
 ]);
+$router->add('loginaccess', [
+	'controller' => 'users',
+	'action' => 'loginaccess'
+]);
 $router->add('logout', [
 	'controller' => 'users',
 	'action' => 'logout'
+]);
+$router->add('logoutmessage', [
+	'controller' => 'users',
+	'action' => 'logoutmessage'
+]);
+
+// users
+$router->add('items', [
+	'controller' => 'items',
+	'action' => 'index',
+	'namespace' => 'UserController'
 ]);
 
 // password generator

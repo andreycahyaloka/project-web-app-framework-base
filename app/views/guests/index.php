@@ -10,14 +10,6 @@
 		<!-- <?php endforeach; ?> -->
 	<!-- </ul> -->
 
-	<!-- <?php echo config\Config::BASE_URL; ?> -->
-	<!-- <br /> -->
-<?php
-	if (isset($_SESSION['user_id'])) {
-		echo $_SESSION['user_id'];
-	}
-?>
-
 <main class="main-container" id="myMainContainer">
 
 	<div class="main-panel-container">

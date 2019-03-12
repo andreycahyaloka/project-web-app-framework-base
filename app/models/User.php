@@ -128,6 +128,31 @@ class User extends Model {
 		return $stmt->fetch();
 	}
 
+		/**
+	 * find a user model by id
+	 * 
+	 * @param string $id - the user id
+	 * @return mixed - user object if found, false otherwise
+	 */
+	public static function findById($id) {
+		$sql = 'SELECT *
+				FROM
+					users
+				WHERE
+					id = :id;';
+
+		$db = static::getDB();
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+		$stmt->execute();
+
+		return $stmt->fetch();
+	}
+
 	/**
 	 * authenticate a user by email and password
 	 * 

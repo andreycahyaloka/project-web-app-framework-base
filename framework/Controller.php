@@ -2,6 +2,9 @@
 
 namespace framework;
 
+use app\auth\Auth;
+use app\messages\Flash;
+
 /**
  * controller
  */
@@ -68,5 +71,26 @@ abstract class Controller {
 	public function redirect($url) {
 		header('Location: ./' . $url, true, 303);
 		exit;
+	}
+
+	/**
+	 * require the user to be logged in before giving access to the requested page.
+	 * remember the requested page for later,
+	 * then redirect to the login page.
+	 * 
+	 * @return void
+	 */
+	protected function requireLogin() {
+		if (! Auth::getUser()) {
+			// set flash messages
+			Flash::addMessage('Please login to access the page.', Flash::INFO);
+
+			// save requested page
+			Auth::saveRequestedPage();
+
+			// redirect to login form
+			$this->redirect('./login');
+			// exit('access denied.');
+		}
 	}
 }

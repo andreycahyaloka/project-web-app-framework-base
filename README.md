@@ -12,7 +12,9 @@
 	- .htaccess
 	- composer.json
 	- favicon.ico
+- features
 	- form (validation, show hide password)
+	- authentication
 - references
 	- roboto (font)
 - library

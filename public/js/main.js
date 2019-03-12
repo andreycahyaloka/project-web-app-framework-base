@@ -74,6 +74,15 @@
 			// 	function () {
 			// 		$(this).attr('type', 'password');
 			// 	});
+
+		// flash messages
+			// remove element after few seconds (in milisecond(s))
+			// $('div.main-alert').fadeOut(3000);
+			setTimeout(function () {
+				$('div.main-alert').fadeOut(1000, function () {
+					$('div.main-alert').remove();
+				});
+			}, 6000);
 	});
 
 /**

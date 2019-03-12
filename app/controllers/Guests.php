@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use framework\View;
-// use classes\pwgen\Pwgen;
+use app\auth\Auth;
 
 /**
  * guests controller
@@ -37,6 +37,7 @@ class Guests extends \framework\Controller {
 	 */
 	public function indexAction() {
 		View::render('guests/index.php', [
+			'currentUser' => Auth::getUser(),
 			'name' => 'skythyx',
 			'colors' => ['green', 'purple', 'black']
 		]);
@@ -48,6 +49,8 @@ class Guests extends \framework\Controller {
 	 * @return void
 	 */
 	public function aboutAction() {
-		View::render('guests/about.php');
+		View::render('guests/about.php', [
+			'currentUser' => Auth::getUser()
+		]);
 	}
 }

@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'app\\auth\\Auth' => $baseDir . '/app/auth/Auth.php',
+    'app\\auth\\AuthController' => $baseDir . '/app/auth/AuthController.php',
+    'app\\auth\\Token' => $baseDir . '/app/auth/Token.php',
     'app\\controllers\\AdminController\\Users' => $baseDir . '/app/controllers/AdminController/Users.php',
     'app\\controllers\\GuestController\\Agecalcs' => $baseDir . '/app/controllers/GuestController/Agecalcs.php',
     'app\\controllers\\GuestController\\Matdescols' => $baseDir . '/app/controllers/GuestController/Matdescols.php',
@@ -13,7 +16,11 @@ return array(
     'app\\controllers\\GuestController\\Strrevs' => $baseDir . '/app/controllers/GuestController/Strrevs.php',
     'app\\controllers\\Guests' => $baseDir . '/app/controllers/Guests.php',
     'app\\controllers\\Posts' => $baseDir . '/app/controllers/Posts.php',
+    'app\\controllers\\UserController\\Items' => $baseDir . '/app/controllers/UserController/Items.php',
+    'app\\controllers\\Users' => $baseDir . '/app/controllers/Users.php',
+    'app\\messages\\Flash' => $baseDir . '/app/messages/Flash.php',
     'app\\models\\Post' => $baseDir . '/app/models/Post.php',
+    'app\\models\\User' => $baseDir . '/app/models/User.php',
     'classes\\agecalc\\Agecalc' => $baseDir . '/classes/agecalc/Agecalc.class.php',
     'classes\\pwgen\\Pwgen' => $baseDir . '/classes/pwgen/Pwgen.class.php',
     'classes\\strrev\\Strrev' => $baseDir . '/classes/strrev/Strrev.class.php',

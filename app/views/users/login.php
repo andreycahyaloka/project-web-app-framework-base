@@ -17,7 +17,7 @@
 			</small>
 
 			<label for="myLoginEmail">email</label>
-			<input type="email" id="myLoginEmail" name="loginEmail" value="<?php if (isset($emails)) { echo htmlspecialchars($emails); } ?>" autocomplete="off" required autofocus />
+			<input type="email" id="myLoginEmail" name="loginEmail" value="<?php if (isset($emails)) { echo htmlspecialchars($emails); } ?>" required autofocus />
 
 			<label for="myPassword">password</label>
 			<input type="password" id="myInputPassword" name="inputPassword" required />
@@ -34,7 +34,7 @@
 					<input type="reset" class="main-button btn-secondary-flat flex-content-none" value="reset" />
 					<div class="flex-content-none main-flexbox-container flex-row-between-top flex-wrap">
 						<a href="./" class="main-button btn-secondary-normal flex-content-none">cancel</a>
-						<button type="submit" class="main-button btn-primary-normal flex-content-none" id="myButtonLoginOutput" formaction="./login" formmethod="POST" form="myFormLogin">login</button>
+						<button type="submit" class="main-button btn-primary-normal flex-content-none" id="myButtonLoginOutput" formaction="./loginaccess" formmethod="POST" form="myFormLogin">login</button>
 					</div>
 				</div>
 			</div>
