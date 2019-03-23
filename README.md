@@ -1,8 +1,6 @@
 ### project-web-app-framework-base
 ---
-
-<span style="font-family:monospace;">
-
+```
 - php framework native
 	- mvc
 	- route
@@ -31,8 +29,7 @@
 	- password generator
 	- age calculator
 	- string reverser
-</span>
-
+```
 ---
 - init
 	- composer update
