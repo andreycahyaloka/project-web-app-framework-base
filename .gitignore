@@ -1,1 +1,4 @@
-# 
+# main - php framework native
+/config/Mail.php;
+/vendor/*
+! /vendor/composer/

@@ -20,6 +20,10 @@ class ComposerStaticInit1b0581fe84bd48bb8a57071328af034f
         array (
             'app\\' => 4,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -39,11 +43,22 @@ class ComposerStaticInit1b0581fe84bd48bb8a57071328af034f
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
     );
 
     public static $classMap = array (
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'app\\auth\\Auth' => __DIR__ . '/../..' . '/app/auth/Auth.php',
         'app\\auth\\AuthController' => __DIR__ . '/../..' . '/app/auth/AuthController.php',
+        'app\\auth\\MailController' => __DIR__ . '/../..' . '/app/auth/MailController.php',
+        'app\\auth\\PasswordController' => __DIR__ . '/../..' . '/app/auth/PasswordController.php',
         'app\\auth\\Token' => __DIR__ . '/../..' . '/app/auth/Token.php',
         'app\\controllers\\AdminController\\Users' => __DIR__ . '/../..' . '/app/controllers/AdminController/Users.php',
         'app\\controllers\\GuestController\\Agecalcs' => __DIR__ . '/../..' . '/app/controllers/GuestController/Agecalcs.php',
@@ -56,6 +71,7 @@ class ComposerStaticInit1b0581fe84bd48bb8a57071328af034f
         'app\\controllers\\Users' => __DIR__ . '/../..' . '/app/controllers/Users.php',
         'app\\messages\\Flash' => __DIR__ . '/../..' . '/app/messages/Flash.php',
         'app\\models\\Post' => __DIR__ . '/../..' . '/app/models/Post.php',
+        'app\\models\\RememberLogin' => __DIR__ . '/../..' . '/app/models/RememberLogin.php',
         'app\\models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
         'classes\\agecalc\\Agecalc' => __DIR__ . '/../..' . '/classes/agecalc/Agecalc.class.php',
         'classes\\pwgen\\Pwgen' => __DIR__ . '/../..' . '/classes/pwgen/Pwgen.class.php',

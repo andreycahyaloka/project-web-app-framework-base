@@ -6,8 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'PHPMailer\\PHPMailer\\Exception' => $vendorDir . '/phpmailer/phpmailer/src/Exception.php',
+    'PHPMailer\\PHPMailer\\OAuth' => $vendorDir . '/phpmailer/phpmailer/src/OAuth.php',
+    'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/src/PHPMailer.php',
+    'PHPMailer\\PHPMailer\\POP3' => $vendorDir . '/phpmailer/phpmailer/src/POP3.php',
+    'PHPMailer\\PHPMailer\\SMTP' => $vendorDir . '/phpmailer/phpmailer/src/SMTP.php',
     'app\\auth\\Auth' => $baseDir . '/app/auth/Auth.php',
     'app\\auth\\AuthController' => $baseDir . '/app/auth/AuthController.php',
+    'app\\auth\\MailController' => $baseDir . '/app/auth/MailController.php',
+    'app\\auth\\PasswordController' => $baseDir . '/app/auth/PasswordController.php',
     'app\\auth\\Token' => $baseDir . '/app/auth/Token.php',
     'app\\controllers\\AdminController\\Users' => $baseDir . '/app/controllers/AdminController/Users.php',
     'app\\controllers\\GuestController\\Agecalcs' => $baseDir . '/app/controllers/GuestController/Agecalcs.php',
@@ -20,6 +27,7 @@ return array(
     'app\\controllers\\Users' => $baseDir . '/app/controllers/Users.php',
     'app\\messages\\Flash' => $baseDir . '/app/messages/Flash.php',
     'app\\models\\Post' => $baseDir . '/app/models/Post.php',
+    'app\\models\\RememberLogin' => $baseDir . '/app/models/RememberLogin.php',
     'app\\models\\User' => $baseDir . '/app/models/User.php',
     'classes\\agecalc\\Agecalc' => $baseDir . '/classes/agecalc/Agecalc.class.php',
     'classes\\pwgen\\Pwgen' => $baseDir . '/classes/pwgen/Pwgen.class.php',

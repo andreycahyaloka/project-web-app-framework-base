@@ -1,5 +1,4 @@
 ### project-web-app-framework-base
-
 - php framework native
 	- mvc
 	- route
@@ -9,15 +8,16 @@
 	- template engine native
 	- classes
 	- ajax
+	- authentication
+	- remember login
+	- request reset password link by email
 	- .htaccess
 	- composer.json
 	- favicon.ico
 - features
 	- form (validation, show hide password)
-	- authentication
-- references
-	- roboto (font)
 - library
+	- roboto (font)
 	- font-awesome (icon)
 	- jquery
 	- jquery-validation
@@ -27,3 +27,8 @@
 	- password generator
 	- age calculator
 	- string reverser
+
+- init
+	- composer update
+	- composer install
+	- composer dump-autoload

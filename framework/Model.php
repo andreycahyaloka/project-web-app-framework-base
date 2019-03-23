@@ -15,13 +15,13 @@ abstract class Model {
 	 * @return void
 	 */
 	protected static function getDB() {
-		static $db = null;
+		$db = null;
 
-		if ($db === null) {
+		if ($db == null) {
 			$dsn = 'mysql:host=' . Config::DB_HOST .
 				';dbname=' . Config::DB_NAME .
 				';charset=' . Config::DB_CHARSET . ';';
-			
+
 			$db = new PDO($dsn,
 				Config::DB_USERNAME,
 				Config::DB_PASSWORD);

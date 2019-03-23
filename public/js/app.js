@@ -23,9 +23,60 @@
 				strrevAjax();
 			});
 
+		// jquery-validation
+			// jquery-validation addmethod (regex)
+			$.validator.addMethod('validPassword',
+				function (value, element, param) {
+					if (value != '') {
+						if (value.match(/.*[a-z]+.*/i) == null) {
+							return false;
+						}
+						if (value.match(/.*\d+.*/) == null) {
+							return false;
+						}
+					}
+					return true;
+				},
+				'Must contain at least one letter and one number.'
+			);
+
+			// jquery-validation rules call element-name
+			$('form#myFormRegister, form#myFormReset').validate( {
+				rules: {
+					'registerName': 'required',
+					'registerEmail': {
+						required: true,
+						email: true,
+						// ajax route to validate email exists
+						remote: './validateemailajax'
+					},
+					'inputPassword': {
+						required: true,
+						minlength: 6,
+						validPassword: true
+					}
+				},
+				messages: {
+					'registerEmail': {
+						remote: 'email already exists.'
+					},
+					'inputPassword': {
+						required: 'password can\'t be blank.',
+						minlength: jQuery.validator.format("min {0} characters."),
+						rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long.")
+					}
+				}
+				// wrapper: 'small'
+			});
+
 		// form register - jquery-validation
 			$('button#myButtonRegisterOutput').click(function () {
-				formRegisterValidation();
+				$('form#myFormRegister').valid();
+			});
+
+		// form reset - jquery-validation
+			$('button#myButtonResetOutput').click(function () {
+				$('form#myFormReset').valid();
 			});
 	});
 
@@ -163,53 +214,5 @@
 		})
 		.fail(function () {
 			console.log('strrev ajax failed!');
-		});
-	}
-
-// form register jquery-validation
-	function formRegisterValidation() {
-		// jquery-validation addmethod (regex)
-		$.validator.addMethod('validPassword',
-			function (value, element, param) {
-				if (value != '') {
-					if (value.match(/.*[a-z]+.*/i) == null) {
-						return false;
-					}
-					if (value.match(/.*\d+.*/) == null) {
-						return false;
-					}
-				}
-				return true;
-			},
-			'Must contain at least one letter and one number.'
-		);
-
-		// jquery-validation rules call element-name
-		$('form#myFormRegister').validate( {
-			rules: {
-				'registerName': 'required',
-				'registerEmail': {
-					required: true,
-					email: true,
-					// ajax route to validate email exists
-					remote: './validateemailajax'
-				},
-				'inputPassword': {
-					required: true,
-					minlength: 6,
-					validPassword: true
-				}
-			},
-			messages: {
-				'registerEmail': {
-					remote: 'email already exists.'
-				},
-				'inputPassword': {
-					required: 'password can\'t be blank.',
-					minlength: jQuery.validator.format("min {0} characters."),
-					rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long.")
-				}
-			},
-			// wrapper: 'small'
 		});
 	}

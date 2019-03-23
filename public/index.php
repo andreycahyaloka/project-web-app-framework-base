@@ -3,7 +3,7 @@
 /**
  * PHP Framework Native
  * 
- * @package main PHP Framework Native
+ * @package main - PHP Framework Native
  * @author Andrey Cahyaloka <cyberdolls@syghtarts.com>
  */
 
@@ -33,7 +33,7 @@
 // });
 
 /**
- * composer packages autoloader
+ * autoloader composer packages
  */
 require '../vendor/autoload.php';
 
@@ -94,19 +94,19 @@ $router->add('store', [
 ]);
 $router->add('storesuccess', [
 	'controller' => 'users',
-	'action' => 'storeSuccess'
+	'action' => 'storesuccess'
 ]);
 $router->add('validateemailajax', [
 	'controller' => 'users',
-	'action' => 'validateEmailAjax'
+	'action' => 'validateemailajax'
 ]);
 $router->add('login', [
 	'controller' => 'users',
 	'action' => 'login'
 ]);
-$router->add('loginaccess', [
+$router->add('loginprocess', [
 	'controller' => 'users',
-	'action' => 'loginaccess'
+	'action' => 'loginprocess'
 ]);
 $router->add('logout', [
 	'controller' => 'users',
@@ -115,6 +115,22 @@ $router->add('logout', [
 $router->add('logoutmessage', [
 	'controller' => 'users',
 	'action' => 'logoutmessage'
+]);
+$router->add('forgotpassword', [
+	'controller' => 'users',
+	'action' => 'forgotpassword'
+]);
+$router->add('forgotpasswordprocess', [
+	'controller' => 'users',
+	'action' => 'forgotpasswordprocess'
+]);
+$router->add('resetpassword/{token:[\da-f]+}', [
+	'controller' => 'users',
+	'action' => 'resetpassword'
+]);
+$router->add('resetpasswordprocess', [
+	'controller' => 'users',
+	'action' => 'resetpasswordprocess'
 ]);
 
 // users

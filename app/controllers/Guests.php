@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use framework\View;
 use app\auth\Auth;
+use app\auth\MailController;
 
 /**
  * guests controller
@@ -37,7 +38,6 @@ class Guests extends \framework\Controller {
 	 */
 	public function indexAction() {
 		View::render('guests/index.php', [
-			'currentUser' => Auth::getUser(),
 			'name' => 'skythyx',
 			'colors' => ['green', 'purple', 'black']
 		]);
@@ -49,6 +49,9 @@ class Guests extends \framework\Controller {
 	 * @return void
 	 */
 	public function aboutAction() {
+		// php-mailer test
+		// MailController::sendMail('clocksync619@gmail.com', 'test subject', 'test text', 'test <b>html</b>');
+
 		View::render('guests/about.php', [
 			'currentUser' => Auth::getUser()
 		]);

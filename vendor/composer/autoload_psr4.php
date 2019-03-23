@@ -10,4 +10,5 @@ return array(
     'config\\' => array($baseDir . '/config'),
     'classes\\' => array($baseDir . '/classes'),
     'app\\' => array($baseDir . '/app'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
 );

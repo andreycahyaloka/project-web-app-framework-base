@@ -79,10 +79,10 @@
 			// remove element after few seconds (in milisecond(s))
 			// $('div.main-alert').fadeOut(3000);
 			setTimeout(function () {
-				$('div.main-alert').fadeOut(1000, function () {
+				$('div.main-alert').fadeOut(3000, function () {
 					$('div.main-alert').remove();
 				});
-			}, 6000);
+			}, 3000);
 	});
 
 /**
@@ -154,6 +154,16 @@
 		
 	}
 
+// show hide form password
+	function myShowHidePasswordFunction(inputPassword, checkPassword) {
+		if ((inputPassword.attr('type') == 'password') && (checkPassword.is(':checked'))) {
+			inputPassword.attr('type', 'text');
+		}
+		else {
+			inputPassword.attr('type', 'password');
+		}
+	}
+
 /**
  * direct click
  */
@@ -190,14 +200,4 @@
 			this.style.setProperty('width', '0%', 'important');
 			this.style.setProperty('opacity', '0', 'important');
 		});
-	}
-
-// show hide form password
-	function myShowHidePasswordFunction(inputPassword, checkPassword) {
-		if ((inputPassword.attr('type') == 'password') && (checkPassword.is(':checked'))) {
-			inputPassword.attr('type', 'text');
-		}
-		else {
-			inputPassword.attr('type', 'password');
-		}
 	}

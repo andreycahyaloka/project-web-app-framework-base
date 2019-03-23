@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-start-light.php'; ?>
 	<title>404</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container main-error-container" id="myMainContainer">
 
@@ -19,4 +19,4 @@
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-end-light.php'; ?>

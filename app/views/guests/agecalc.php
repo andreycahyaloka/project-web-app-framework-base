@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-start-light.php'; ?>
 	<title>Age Calculator</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container" id="myMainContainer">
 
@@ -43,4 +43,4 @@
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-end-light.php'; ?>

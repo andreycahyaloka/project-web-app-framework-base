@@ -3,6 +3,7 @@
 namespace app\auth;
 
 use app\models\User;
+use app\models\RememberLogin;
 
 /**
  * authentication
@@ -12,14 +13,21 @@ class Auth {
 	 * login the user
 	 * 
 	 * @param User $users - the user model
+	 * @param boolean $rememberLogins - remember the login if true
 	 * @return void
 	 */
-	public static function login($users) {
+	public static function login($users, $rememberLogins) {
 		// regenerate session id on login
 		session_regenerate_id(true);
 
 		// set user-id into session
 		$_SESSION['user_id'] = $users->id;
+
+		if  ($rememberLogins) {
+			if ($users->rememberLogin()) {
+				setcookie('remember_me', $users->rememberToken, $users->expiryTimestamp, '/');
+			}
+		}
 	}
 
 	/**
@@ -48,6 +56,9 @@ class Auth {
 
 		// destroy the session
 		session_destroy();
+
+		// delete remember-login from cookie
+		static::deleteLoginFromRememberCookie();
 	}
 
 	/**
@@ -83,13 +94,58 @@ class Auth {
 
 	/**
 	 * get the current authenticated-user,
-	 * from the session or the remember-me cookie.
+	 * from the session or the remember_me cookie.
 	 * 
 	 * @return mixed - the user model or null if not authenticated
 	 */
 	public static function getUser() {
 		if (isset($_SESSION['user_id'])) {
 			return User::findById($_SESSION['user_id']);
+		}
+		else {
+			return static::loginFromRememberCookie();
+		}
+	}
+
+	/**
+	 * login the user from a remembered login cookie
+	 * 
+	 * @return mixed - the user model if login cookie found, null otherwise
+	 */
+	protected static function loginFromRememberCookie() {
+		$cookie = $_COOKIE['remember_me'] ?? false;
+
+		if ($cookie) {
+			$rememberLogin = RememberLogin::findByToken($cookie);
+
+			if (($rememberLogin) && (! $rememberLogin->hasExpired())) {
+				$user = $rememberLogin->getUser();
+
+				static::login($user, false);
+
+				return $user;
+			}
+		}
+	}
+
+	/**
+	 * forget the remember login, if present
+	 * 
+	 * @return void
+	 */
+	protected static function deleteLoginFromRememberCookie() {
+		$cookie = $_COOKIE['remember_me'] ?? false;
+
+		if ($cookie) {
+			$rememberLogin = RememberLogin::findByToken($cookie);
+			var_dump($rememberLogin);
+
+			if ($rememberLogin) {
+				$rememberLogin->deleteLoginFromRememberDatabase();
+			}
+
+			// delete cookie (set expiration date to one hour ago)
+			setcookie('remember_me', '', time() - 3600, '/');
 		}
 	}
 }

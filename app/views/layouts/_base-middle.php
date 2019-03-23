@@ -15,3 +15,16 @@
 <button class="main-go_to_top" id="myButtonGo_to_top" onclick="myGo_to_topFunction();" disabledx>
 	<i class="fas fa-chevron-up fa-fw"></i>
 </button>
+
+<!-- flash messages -->
+<?php
+$flashMessages = app\messages\Flash::getMessages();
+
+if (isset($flashMessages) && is_array($flashMessages)) {
+	foreach ($flashMessages as $message): ?>
+		<div class="main-alert alert-<?php echo htmlspecialchars($message['type']); ?>">
+			<?php echo htmlspecialchars($message['text']); ?>
+		</div>
+	<?php endforeach;
+}
+?>

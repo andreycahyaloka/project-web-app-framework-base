@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-start-light.php'; ?>
 	<title>Login</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container">
 
@@ -29,12 +29,20 @@
 				</label>
 			</div>
 
+			<div class="checkbox-container main-max_width-50">
+				<label class="checkbox-content">
+					<input type="checkbox" id="myCheckRememberLogin" name="checkRememberLogin" <?php if ((isset($rememberLogins)) && ($rememberLogins == true)) { ?> checked <?php } ?> />
+					<span>remember me</span>
+				</label>
+			</div>
+
 			<div class="form-footer">
 				<div class="main-flexbox-container flex-row-between-top flex-wrap">
-					<input type="reset" class="main-button btn-secondary-flat flex-content-none" value="reset" />
+					<!-- <input type="reset" class="main-button btn-secondary-flat flex-content-none" value="reset" /> -->
+					<a href="./forgotpassword" class="main-button btn-secondary-flat flex-content-none">forgot password</a>
 					<div class="flex-content-none main-flexbox-container flex-row-between-top flex-wrap">
 						<a href="./" class="main-button btn-secondary-normal flex-content-none">cancel</a>
-						<button type="submit" class="main-button btn-primary-normal flex-content-none" id="myButtonLoginOutput" formaction="./loginaccess" formmethod="POST" form="myFormLogin">login</button>
+						<button type="submit" class="main-button btn-primary-normal flex-content-none" id="myButtonLoginOutput" formaction="./loginprocess" formmethod="POST" form="myFormLogin">login</button>
 					</div>
 				</div>
 			</div>
@@ -44,4 +52,4 @@
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-end-light.php'; ?>

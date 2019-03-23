@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-start-light.php'; ?>
 	<title>Register</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container">
 
@@ -17,10 +17,10 @@
 			</small>
 
 			<label for="myRegisterName">name</label>
-			<input type="text" id="myRegisterName" name="registerName" value="<?php if (isset($users)) { echo htmlspecialchars($users->signupName); } ?>" autocomplete="off" required autofocus />
+			<input type="text" id="myRegisterName" name="registerName" value="<?php if (isset($users)) { echo htmlspecialchars($users->registerName); } ?>" autocomplete="off" required autofocus />
 
 			<label for="myRegisterEmail">email</label>
-			<input type="email" id="myRegisterEmail" name="registerEmail" value="<?php if (isset($users)) { echo htmlspecialchars($users->signupEmail); } ?>" autocomplete="off" required />
+			<input type="email" id="myRegisterEmail" name="registerEmail" value="<?php if (isset($users)) { echo htmlspecialchars($users->registerEmail); } ?>" autocomplete="off" required />
 
 			<label for="myPassword">password</label>
 			<input type="password" id="myInputPassword" name="inputPassword" required />
@@ -47,4 +47,4 @@
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end-custom.php'; ?>
+<?php include dirname(__DIR__) . '/layouts/_base-end-light.php'; ?>

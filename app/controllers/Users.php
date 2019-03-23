@@ -30,9 +30,11 @@ class Users extends Controller {
 		// var_dump($_POST);
 		$users = new User($_POST);
 
-		if ($users->save()) {
+		if ($users->create()) {
+			Flash::addMessage('Register successful.', Flash::SUCCESS);
+
 			// redirect if success
-			$this->redirect('storesuccess');
+			$this->redirect('./storesuccess');
 			// header('Location: ./storesuccess', true, 303);
 			// exit;
 		}
@@ -50,7 +52,7 @@ class Users extends Controller {
 	 * @return void
 	 */
 	public function storeSuccessAction() {
-		View::render('users/index.php');
+		View::render('guests/index.php');
 	}
 
 	/**
@@ -75,22 +77,29 @@ class Users extends Controller {
 	}
 
 	/**
-	 * login access
+	 * login process
 	 * 
 	 * @return void
 	 */
-	public function loginAccessAction() {
+	public function loginProcessAction() {
 		// echo ($_REQUEST['loginEmail'] . ', ' . $_REQUEST['inputPassword']);
 		$users = User::authenticate($_POST['loginEmail'], $_POST['inputPassword']);
 
+		$rememberLogins = isset($_POST['checkRememberLogin']);
+
+		// var_dump($_POST);
+		// var_dump($rememberLogins);
+
 		if ($users) {
-			Auth::login($users);
+			// remember the login using the cookie
+			Auth::login($users, $rememberLogins);
 
 			// add flash message after succesfully login
 			Flash::addMessage('Login successful.', Flash::SUCCESS);
 
 			// redirect after login to index
 			// $this->redirect('./');
+
 			// redirect after login to requested page
 			$this->redirect(Auth::getRequestedPage());
 		}
@@ -99,7 +108,8 @@ class Users extends Controller {
 			Flash::addMessage('Login failed, please try again!', Flash::WARNING);
 
 			View::render('users/login.php', [
-				'emails' => $_POST['loginEmail']
+				'emails' => $_POST['loginEmail'],
+				'rememberLogins' => $rememberLogins
 			]);
 		}
 	}
@@ -124,11 +134,92 @@ class Users extends Controller {
 	 * 
 	 * @return void
 	 */
-	public function LogoutMessageAction() {
+	public function logoutMessageAction() {
 		// add flash message after logout
 		Flash::addMessage('Logout successful.', Flash::SUCCESS);
 
 		// redirect after logout to index
-		$this->redirect('./pwgen');
+		$this->redirect('./');
+	}
+
+	/**
+	 * show the forgotten password page
+	 * 
+	 * @return void
+	 */
+	public function forgotPasswordAction() {
+		View::render('users/forgot.php');
+	}
+
+	/**
+	 * send the password reset link to the supplied email
+	 * 
+	 * @return void
+	 */
+	public function forgotPasswordProcessAction() {
+		User::sendPasswordReset($_POST['forgotEmail']);
+		// var_dump($_POST['forgotEmail']);
+
+		Flash::addMessage('Reset password link successful sent.', Flash::SUCCESS);
+
+		View::render('users/forgotmessage.php');
+	}
+
+	/**
+	 * show reset password page
+	 * 
+	 * @return void
+	 */
+	public function resetPasswordAction() {
+		$tokens = $this->routeParams['token'];
+
+		$users = $this->getResetPasswordUser($tokens);
+		// var_dump($users);
+
+		View::render('users/reset.php', [
+			'tokens' => $tokens
+		]);
+	}
+
+	/**
+	 * reset the user password
+	 * 
+	 * @return void
+	 */
+	public function resetPasswordProcessAction() {
+		$tokens = $_POST['resetToken'];
+
+		$users = $this->getResetPasswordUser($tokens);
+
+		if ($users->resetPassword($_POST['inputPassword'])) {
+			Flash::addMessage('Reset password successful.', Flash::SUCCESS);
+
+			View::render('users/resetsuccess.php');
+		}
+		else {
+			View::render('users/reset.php', [
+				'tokens' => $tokens,
+				'users' => $users
+			]);
+		}
+	}
+
+	/**
+	 * find the user model associated with the password reset token,
+	 * or end the request with a message
+	 * 
+	 * @param string $tokens - password reset token sent to the user
+	 * @return mixed - user object if found and the token hasn't expired, null otherwise
+	 */
+	protected function getResetPasswordUser($tokens) {
+		$users = User::findByPasswordResetToken($tokens);
+
+		if ($users) {
+			return $users;
+		}
+		else {
+			View::render('users/resetinvalid.php');
+			exit;
+		}
 	}
 }
