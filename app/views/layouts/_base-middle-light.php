@@ -1,9 +1,9 @@
-	<?php include dirname(__DIR__) . '/layouts/_stylesheets.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_stylesheets.php'; ?>
 </head>
 
 <body>
-	<?php include dirname(__DIR__) . '/layouts/_nav.php'; ?>
-	<?php include dirname(__DIR__) . '/layouts/_aside.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_nav.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_aside.php'; ?>
 
 <!-- main (scroll indicator) -->
 <div class="main-scroll_indicator-container">

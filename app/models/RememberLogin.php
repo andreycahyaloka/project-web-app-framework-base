@@ -3,9 +3,9 @@
 namespace app\models;
 
 use framework\Model;
-use PDO;
 use app\auth\Token;
 use app\models\User;
+use PDO;
 
 /**
  * remembered login model

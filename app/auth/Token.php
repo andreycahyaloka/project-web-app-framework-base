@@ -2,8 +2,6 @@
 
 namespace app\auth;
 
-use config\Config;
-
 /**
  * unique random tokens
  */
@@ -49,6 +47,6 @@ class Token {
 	 */
 	public function getTokenHash() {
 		// sha256 = 64 chars
-		return hash_hmac('sha256', $this->token, Config::SECRET_KEY);
+		return hash_hmac('sha256', $this->token, SECRET_KEY);
 	}
 }

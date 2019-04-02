@@ -2,7 +2,6 @@
 
 namespace app\auth;
 
-use config\Mail;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -29,14 +28,14 @@ class MailController {
 				// 1 = client messages logs
 				// 2 = client and server messages logs
 			$mail->isSMTP();								// Set mailer to use SMTP
-			$mail->Host = Mail::MAIL_HOST;					// Specify main and backup SMTP servers
+			$mail->Host = MAILER_HOST;						// Specify main and backup SMTP servers
 				// use
 				// $mail->Host = gethostbyname('smtp.gmail.com');
 				// if your network does not support SMTP over IPv6
 			$mail->SMTPAuth = true;							// Enable SMTP authentication
-			$mail->Username = Mail::MAIL_NAME;				// SMTP username
+			$mail->Username = MAILER_NAME;					// SMTP username
 				// full email address
-			$mail->Password = Mail::MAIL_PASSWORD;			// SMTP password
+			$mail->Password = MAILER_PASSWORD;				// SMTP password
 				// email password
 			$mail->SMTPSecure = 'tls';						// Enable TLS encryption, `ssl` also accepted
 			$mail->Port = 587;								// TCP port to connect to
@@ -62,9 +61,9 @@ class MailController {
 			$mail->CharSet = 'UTF-8';
 
 			$mail->send();
-			echo 'Message has been sent.';
+			// echo 'Message has been sent.';
 		} catch (Exception $e) {
-			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+			// echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
 	}
 }

@@ -69,7 +69,8 @@ abstract class Controller {
 	 * @return void
 	 */
 	public function redirect($url) {
-		header('Location: ./' . $url, true, 303);
+		// header('Location: ./' . $url, true, 303);
+		header('Location: ' . BASE_URL . $url, true, 303);
 		exit;
 	}
 

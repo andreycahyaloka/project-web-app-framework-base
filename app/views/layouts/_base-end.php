@@ -1,4 +1,4 @@
-	<?php include dirname(__DIR__) . '/layouts/_footer.php'; ?>
-	<?php include dirname(__DIR__) . '/layouts/_scripts.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_footer.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_scripts.php'; ?>
 </body>
 </html>

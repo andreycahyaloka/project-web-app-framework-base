@@ -28,7 +28,7 @@ class View {
 		extract($args, EXTR_SKIP);
 
 		// relative to directory
-		$file = "../app/views/$view";
+		$file = BASE_PATH . 'app/views/' . $view;
 
 		if (is_readable($file)) {
 			require $file;
@@ -53,7 +53,7 @@ class View {
 		extract($args, EXTR_SKIP);
 
 		// relative to directory
-		$file = '../app/views/' . $view;
+		$file = BASE_PATH . "app/views/$view";
 
 		if (is_readable($file)) {
 			// file into variable

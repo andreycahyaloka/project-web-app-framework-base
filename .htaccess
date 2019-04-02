@@ -26,10 +26,16 @@
 	</IfModule>
 
 	RewriteEngine On
-	RewriteBase /base-hybrid/project-web-app-framework-base/
+	# RewriteBase /base-hybrid/project-web-app-framework-base/
+	RewriteBase /
 
 	### alternative index files
 	DirectoryIndex index.php index.html index2.html
+
+	# update php.ini setting
+	# variables_order = EGPCS (Environment, Get, Post, Cookie, and Server)
+	# Server always contain Ecvironment
+	# php_value variables_order EGPCS
 
 	### custom error pages
 	### forbidden
@@ -45,5 +51,6 @@
 
 	### rule for url
 	### remove index.php? from url
-	RewriteRule ^(.*)$ public/index.php?$1 [L,QSA]
+	# RewriteRule ^(.*)$ public/index.php?$1 [L,QSA]
+	RewriteRule ^(.*)$ base-hybrid/project-web-app-framework-base/public/index.php?$1 [L,QSA]
 </IfModule>

@@ -1,4 +1,4 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include dirname(__DIR__) . '/layouts/_head.php'; ?>
+	<?php include BASE_PATH . '/app/views/layouts/_head.php'; ?>

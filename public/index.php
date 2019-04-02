@@ -10,18 +10,30 @@
 /**
  * front controller
  */
-// echo 'requested url = "' . $_SERVER['QUERY_STRING'] . '"';
-// echo '<br />' . '<br />';
+echo 'http_host => ';
+echo htmlspecialchars($_SERVER['HTTP_HOST']);
+echo '<br />';
+echo 'document_root => ';
+echo htmlspecialchars($_SERVER['DOCUMENT_ROOT']);
+echo '<br />';
+echo 'request_uri => ';
+echo htmlspecialchars($_SERVER['REQUEST_URI']);
+echo '<br />';
+echo 'query_string / requested-url => ';
+echo '"' . htmlspecialchars($_SERVER['QUERY_STRING']) . '"';
+echo '<br />' . '<br />';
 
 /**
  * auth cookie
  */
-// set auth timeout in seconds
+// set cookie auth timeout in seconds
 // ini_set('session.cookie_lifetime', 864000);
 
 /**
  * autoloader
+ * only load => class, namespace, constant
  */
+// autoloader namespaced-class files
 // spl_autoload_register(function ($className) {
 // 	// get app root directory
 // 	$root = dirname(__DIR__);
@@ -31,6 +43,28 @@
 // 		require $root . '/' . str_replace('\\', '/', $className) . '.php';
 // 	}
 // });
+// autoloader config files
+// function autoloadConfigFile() {
+// 	// get app root directory
+// 	$root = dirname(__DIR__);
+// 	$filePath = $root . '/config/';
+// 	// remove the dots that scandir() picks up in linux environments
+// 	$fileName = array_slice(scandir($root . '/config/'), 2);
+
+// 	foreach ($fileName as $fileNames) {
+// 		$fileWithPath = $filePath . $fileNames;
+// 		var_dump($fileNames);
+
+// 		if (is_file($fileWithPath) && is_readable($fileWithPath)) {
+// 			require $fileWithPath;
+// 		}
+// 	}
+// }
+// autoloadConfigFile();
+// loader global-config files with manual-order
+require dirname(__DIR__) . '/config/' . 'globalConfigEnv' . '.php';
+require dirname(__DIR__) . '/config/' . 'globalConfigConst' . '.php';
+// require dirname(__DIR__) . '/config/' . 'Config.php';
 
 /**
  * autoloader composer packages
@@ -40,9 +74,10 @@ require '../vendor/autoload.php';
 /**
  * set default timezone & locale
  */
-date_default_timezone_set(config\Config::DEFAULT_TIMEZONE);
+// date_default_timezone_set(config\Config::DEFAULT_TIMEZONE);
+date_default_timezone_set(DEFAULT_TIMEZONE);
 // echo date_default_timezone_get();
-setlocale(LC_ALL, config\Config::DEFAULT_LOCALE);
+setlocale(LC_ALL, DEFAULT_LOCALE);
 // echo setlocale(LC_ALL, 0);
 
 /**
@@ -95,6 +130,14 @@ $router->add('store', [
 $router->add('storesuccess', [
 	'controller' => 'users',
 	'action' => 'storesuccess'
+]);
+$router->add('confirmaccount/{token:[\da-f]+}', [
+	'controller' => 'users',
+	'action' => 'confirmaccount'
+]);
+$router->add('confirmaccountsuccess', [
+	'controller' => 'users',
+	'action' => 'confirmaccountsuccess'
 ]);
 $router->add('validateemailajax', [
 	'controller' => 'users',

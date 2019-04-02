@@ -1,20 +1,20 @@
 <?php include BASE_PATH . '/app/views/layouts/_base-start-light.php'; ?>
-	<title>Reset Password Success</title>
+	<title>Confirm Account Success</title>
 <?php include BASE_PATH . '/app/views/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container">
 
 <div class="main-form-container main-margin-24">
 	<div class="main-panel-container">
-		<div class="panel-title">reset password</div>
+		<div class="panel-title">confirmation account</div>
 		<div class="panel-content">
 			<!--  -->
 			<div class="main-code main-text-center">
 				<p>
-					Reset password successfully.
+					Confirm account successfully.
 				</p>
 				<p>
-					Please click button bellow to login with your new password.
+					Please click button bellow to login with your confirmed account.
 				</p>
 			</div>
 			<div class="main-text-center" style="margin-top:12px;">

@@ -7,7 +7,6 @@ use framework\View;
 use app\auth\Token;
 use app\auth\MailController;
 use PDO;
-use config\Config;
 
 /**
  * users model
@@ -37,29 +36,84 @@ class User extends Model {
 	/**
 	 * create the user model with the current property values
 	 * 
-	 * @return void
+	 * @return boolean - true if the user was created, false otherwise
 	 */
 	public function create() {
 		$this->validate();
 
 		if (empty($this->errors)) {
+			$passwordHash = password_hash($this->inputPassword, PASSWORD_DEFAULT);
+
+			$token = new Token();
+			$tokenHash = $token->getTokenHash();
+			$this->confirmationToken = $token->getTokenValue();
+
 			$sql = 'INSERT INTO
-						users (name, email, password)
+						users (name, email, password, confirmation_hash)
 					VALUES
-						(:name, :email, :password)';
+						(:name, :email, :password, :confirmation_hash);';
 
 			$db = Model::getDB();
 			$stmt = $db->prepare($sql);
 
-			$passwordHash = password_hash($this->inputPassword, PASSWORD_DEFAULT);
-
 			$stmt->bindValue(':name', $this->registerName, PDO::PARAM_STR);
 			$stmt->bindValue(':email', $this->registerEmail, PDO::PARAM_STR);
 			$stmt->bindValue(':password', $passwordHash, PDO::PARAM_STR);
+			$stmt->bindValue(':confirmation_hash', $tokenHash, PDO::PARAM_STR);
 
 			return $stmt->execute();
 		}
+
 		return false;
+	}
+
+	/**
+	 * send confirmtion link in an email to the user
+	 * 
+	 * @return void
+	 */
+	public function sendConfirmationEmail() {
+		$url = BASE_URL . 'confirmaccount/' . $this->confirmationToken;
+
+		// email content as text
+		$emailText = View::getContent('users/confirmemailcontenttext.php', [
+			'url' => $url,
+			'token' => $this->confirmationToken
+		]);
+		// email content as html
+		$emailHtml = View::getContent('users/confirmemailcontenthtml.php', [
+			'url' => $url,
+			'token' => $this->confirmationToken
+		]);
+
+		MailController::sendMail('clocksync619@gmail.com', 'Account Confirmation', $emailText, $emailHtml);
+	}
+
+	/**
+	 * confirm the user account with the specified confirmation token
+	 * 
+	 * @param string $token - confirmation token from the url
+	 * @return void
+	 */
+	public static function getConfirmAccount($token) {
+		$token = new Token($token);
+		$tokenHash = $token->getTokenHash();
+
+		$sql = 'UPDATE
+					users
+				SET
+					confirmed = :confirmed,
+					confirmation_hash = NULL
+				WHERE
+					confirmation_hash = :confirmation_hash;';
+
+		$db = Model::getDB();
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(':confirmed', 1, PDO::PARAM_INT);
+		$stmt->bindValue(':confirmation_hash', $tokenHash, PDO::PARAM_STR);
+
+		$stmt->execute();
 	}
 
 	/**
@@ -185,7 +239,8 @@ class User extends Model {
 	public static function authenticate($email, $password) {
 		$users = static::findByEmail($email);
 
-		if ($users) {
+		// check the user account is exist and confirmed
+		if ($users && $users->confirmed) {
 			if (password_verify($password, $users->password)) {
 				return $users;
 			}
@@ -277,14 +332,13 @@ class User extends Model {
 	 * @return void
 	 */
 	protected function sendPasswordResetEmail() {
-		$url = Config::BASE_URL . 'resetpassword/' . $this->passwordResetToken;
+		$url = BASE_URL . 'resetpassword/' . $this->passwordResetToken;
 
 		// email content as text
 		$emailText = View::getContent('users/resetemailcontenttext.php', [
 			'url' => $url,
 			'token' => $this->passwordResetToken
 		]);
-
 		// email content as html
 		$emailHtml = View::getContent('users/resetemailcontenthtml.php', [
 			'url' => $url,
@@ -342,6 +396,8 @@ class User extends Model {
 	public function resetPassword($inputPassword) {
 		$this->inputPassword = $inputPassword;
 
+		$passwordHash = password_hash($this->inputPassword, PASSWORD_DEFAULT);
+
 		$this->validate();
 
 		if (empty($this->errors)) {
@@ -356,8 +412,6 @@ class User extends Model {
 
 			$db = Model::getDB();
 			$stmt = $db->prepare($sql);
-
-			$passwordHash = password_hash($this->inputPassword, PASSWORD_DEFAULT);
 
 			$stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 			$stmt->bindValue(':password', $passwordHash, PDO::PARAM_STR);

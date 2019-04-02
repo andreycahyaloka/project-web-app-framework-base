@@ -1,7 +1,7 @@
 ### project-web-app-framework-base
 ---
 ```
-- php framework native
+- main - php framework native
 	- mvc
 	- route
 	- config
@@ -10,6 +10,8 @@
 	- template engine native
 	- classes
 	- ajax
+	- base url
+	- base path
 	- authentication
 	- remember login
 	- request reset password link by email
@@ -32,6 +34,9 @@
 ```
 ---
 - init
+	- update config/globalConfigEnv.php
+	- update config/globalConfigConst.php
+	- update config/Config.php
 	- composer update
 	- composer install
 	- composer dump-autoload

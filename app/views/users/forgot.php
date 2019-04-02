@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start-light.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-start-light.php'; ?>
 	<title>Forgot Password</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle-light.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-middle-light.php'; ?>
 
 <main class="main-container">
 
@@ -31,4 +31,4 @@
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end-light.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-end-light.php'; ?>

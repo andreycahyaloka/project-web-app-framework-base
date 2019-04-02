@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <!-- base -->
-<base href="<?php echo config\Config::BASE_URL; ?>" />
+<base href="<?php echo BASE_URL; ?>" />
 
 <!-- favicon.ico located in the website's root (32 x 32 px) 256 colors -->
-<link rel="icon" href="favicon.ico" />
+<link rel="icon" href="./favicon.ico" />

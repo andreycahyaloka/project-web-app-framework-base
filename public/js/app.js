@@ -84,14 +84,14 @@
  * function
  */
 // get base url for ajax
-	function getBaseUrl() {
-		var pathArray = location.href.split('/');
-		var protocol = pathArray[0];
-		var host = pathArray[2];
-		var url = protocol + '//' + host + '/';
+	// function getBaseUrl() {
+	// 	var pathArray = location.href.split('/');
+	// 	var protocol = pathArray[0];
+	// 	var host = pathArray[2];
+	// 	var url = protocol + '//' + host + '/';
 		
-		return url;
-	}
+	// 	return url;
+	// }
 
 // password generator ajax
 	function pwgenAjax() {

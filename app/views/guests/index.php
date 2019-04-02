@@ -1,6 +1,6 @@
-<?php include dirname(__DIR__) . '/layouts/_base-start.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-start.php'; ?>
 	<title>Index</title>
-<?php include dirname(__DIR__) . '/layouts/_base-middle.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-middle.php'; ?>
 
 	<!-- <p>hello <?php echo htmlspecialchars($name); ?>!</p> -->
 
@@ -905,4 +905,4 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 </main>
 
-<?php include dirname(__DIR__) . '/layouts/_base-end.php'; ?>
+<?php include BASE_PATH . '/app/views/layouts/_base-end.php'; ?>

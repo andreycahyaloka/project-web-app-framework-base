@@ -13,7 +13,7 @@ use app\messages\Flash;
  */
 class Users extends Controller {
 	/**
-	 * register
+	 * register / create
 	 * 
 	 * @return void
 	 */
@@ -31,7 +31,8 @@ class Users extends Controller {
 		$users = new User($_POST);
 
 		if ($users->create()) {
-			Flash::addMessage('Register successful.', Flash::SUCCESS);
+			// send email confirmation
+			$users->sendConfirmationEmail();
 
 			// redirect if success
 			$this->redirect('./storesuccess');
@@ -52,7 +53,36 @@ class Users extends Controller {
 	 * @return void
 	 */
 	public function storeSuccessAction() {
-		View::render('guests/index.php');
+		Flash::addMessage('Register successful.', Flash::SUCCESS);
+
+		View::render('users/registersuccess.php');
+	}
+
+	/**
+	 * confirm a new account
+	 * 
+	 * @return void
+	 */
+	public function confirmAccountAction() {
+		$tokens = $this->routeParams['token'];
+
+		// User::getConfirmAccount($tokens);
+
+		// Flash::addMessage('Account confirmed.', Flash::SUCCESS);
+
+		$this->redirect('/about');
+		// echo 'fuck';
+	}
+
+	/**
+	 * show the confirmation success page
+	 * 
+	 * @return void
+	 */
+	public function confirmAccountSuccessAction() {
+		Flash::addMessage('Account confirmed.', Flash::SUCCESS);
+
+		View::render('users/confirmsuccess.php');
 	}
 
 	/**
@@ -61,10 +91,10 @@ class Users extends Controller {
 	 * @return void
 	 */
 	public function validateEmailAjaxAction() {
-		$is_valids = ! User::emailExists($_GET['registerEmail']);
+		$isValids = ! User::emailExists($_GET['registerEmail']);
 
 		header('Content-Type: application/json');
-		echo json_encode($is_valids);
+		echo json_encode($isValids);
 	}
 
 	/**
@@ -162,11 +192,11 @@ class Users extends Controller {
 
 		Flash::addMessage('Reset password link successful sent.', Flash::SUCCESS);
 
-		View::render('users/forgotmessage.php');
+		View::render('users/forgotsuccess.php');
 	}
 
 	/**
-	 * show reset password page
+	 * show reset password page / edit
 	 * 
 	 * @return void
 	 */
@@ -182,7 +212,7 @@ class Users extends Controller {
 	}
 
 	/**
-	 * reset the user password
+	 * reset the user password / update
 	 * 
 	 * @return void
 	 */
