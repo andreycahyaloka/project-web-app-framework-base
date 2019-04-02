@@ -5,6 +5,8 @@
 	- mvc
 	- route
 	- config
+	- global config constant
+	- global config environment
 	- error & exception handler
 	- logs
 	- template engine native
