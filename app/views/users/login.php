@@ -19,7 +19,7 @@
 			<label for="myLoginEmail">email</label>
 			<input type="email" id="myLoginEmail" name="loginEmail" value="<?php if (isset($emails)) { echo htmlspecialchars($emails); } ?>" required autofocus />
 
-			<label for="myPassword">password</label>
+			<label for="myInputPassword">password</label>
 			<input type="password" id="myInputPassword" name="inputPassword" required />
 
 			<div class="checkbox-container main-max_width-50">

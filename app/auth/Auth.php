@@ -12,20 +12,20 @@ class Auth {
 	/**
 	 * login the user
 	 * 
-	 * @param User $users - the user model
-	 * @param boolean $rememberLogins - remember the login if true
+	 * @param User $user - the user model
+	 * @param boolean $rememberLogin - remember the login if true
 	 * @return void
 	 */
-	public static function login($users, $rememberLogins) {
+	public static function login($user, $rememberLogin) {
 		// regenerate session id on login
 		session_regenerate_id(true);
 
 		// set user-id into session
-		$_SESSION['user_id'] = $users->id;
+		$_SESSION['userId'] = $user->id;
 
-		if  ($rememberLogins) {
-			if ($users->rememberLogin()) {
-				setcookie('remember_me', $users->rememberToken, $users->expiryTimestamp, '/');
+		if  ($rememberLogin) {
+			if ($user->rememberLogin()) {
+				setcookie('rememberMe', $user->rememberToken, $user->expiryTimestamp, '/');
 			}
 		}
 	}
@@ -41,16 +41,16 @@ class Auth {
 
 		// delete the session cookie
 		if (ini_get('session.use_cookies')) {
-			$params = session_get_cookie_params();
+			$param = session_get_cookie_params();
 
 			setcookie(
 				session_name(),
 				'',
 				time() - 42000,
-				$params['path'],
-				$params['domain'],
-				$params['secure'],
-				$params['httponly']
+				$param['path'],
+				$param['domain'],
+				$param['secure'],
+				$param['httponly']
 			);
 		}
 
@@ -67,7 +67,7 @@ class Auth {
 	 * @return boolean
 	 */
 	// public static function isAuthenticated() {
-	// 	return isset($_SESSION['user_id']);
+	// 	return isset($_SESSION['userId']);
 	// }
 	
 	/**
@@ -89,18 +89,19 @@ class Auth {
 	 * @return void
 	 */
 	public static function getRequestedPage() {
-		return $_SESSION['requestedPage'] ?? './';
+		// return $_SESSION['requestedPage'] ?? '/';
+		return $_SESSION['requestedPage'] ?? '';
 	}
 
 	/**
 	 * get the current authenticated-user,
-	 * from the session or the remember_me cookie.
+	 * from the session or the rememberMe cookie.
 	 * 
 	 * @return mixed - the user model or null if not authenticated
 	 */
 	public static function getUser() {
-		if (isset($_SESSION['user_id'])) {
-			return User::findById($_SESSION['user_id']);
+		if (isset($_SESSION['userId'])) {
+			return User::findById($_SESSION['userId']);
 		}
 		else {
 			return static::loginFromRememberCookie();
@@ -113,7 +114,7 @@ class Auth {
 	 * @return mixed - the user model if login cookie found, null otherwise
 	 */
 	protected static function loginFromRememberCookie() {
-		$cookie = $_COOKIE['remember_me'] ?? false;
+		$cookie = $_COOKIE['rememberMe'] ?? false;
 
 		if ($cookie) {
 			$rememberLogin = RememberLogin::findByToken($cookie);
@@ -134,7 +135,7 @@ class Auth {
 	 * @return void
 	 */
 	protected static function deleteLoginFromRememberCookie() {
-		$cookie = $_COOKIE['remember_me'] ?? false;
+		$cookie = $_COOKIE['rememberMe'] ?? false;
 
 		if ($cookie) {
 			$rememberLogin = RememberLogin::findByToken($cookie);
@@ -145,7 +146,7 @@ class Auth {
 			}
 
 			// delete cookie (set expiration date to one hour ago)
-			setcookie('remember_me', '', time() - 3600, '/');
+			setcookie('rememberMe', '', time() - 3600, '/');
 		}
 	}
 }

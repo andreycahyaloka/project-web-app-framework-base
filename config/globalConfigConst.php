@@ -73,7 +73,7 @@ define('DEFAULT_LOCALE', $_ENV['DEFAULT_LOCALE']);
 	define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
 
 /**
- * set secret_key for hash
+ * set secret_key for token-hash
  * 32 characters
  * 
  * @var boolean
@@ -95,7 +95,7 @@ define('SECRET_KEY', $_ENV['SECRET_KEY']);
 	 * 
 	 * @var string
 	 */
-	// define('SMTP_SECURE', $_ENV['SMTP_SECURE']);
+	// define('MAILER_SMTP_SECURE', $_ENV['MAILER_SMTP_SECURE']);
 
 	/**
 	 * set tcp_port
@@ -118,4 +118,4 @@ define('SECRET_KEY', $_ENV['SECRET_KEY']);
 	 */
 	define('MAILER_PASSWORD', $_ENV['MAILER_PASSWORD']);
 
-echo 'fuck_const';
+// echo 'fuck_const';

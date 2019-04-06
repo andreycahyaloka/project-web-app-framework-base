@@ -10,18 +10,18 @@
 /**
  * front controller
  */
-echo 'http_host => ';
-echo htmlspecialchars($_SERVER['HTTP_HOST']);
-echo '<br />';
-echo 'document_root => ';
-echo htmlspecialchars($_SERVER['DOCUMENT_ROOT']);
-echo '<br />';
-echo 'request_uri => ';
-echo htmlspecialchars($_SERVER['REQUEST_URI']);
-echo '<br />';
-echo 'query_string / requested-url => ';
-echo '"' . htmlspecialchars($_SERVER['QUERY_STRING']) . '"';
-echo '<br />' . '<br />';
+// echo 'http_host => ';
+// echo htmlspecialchars($_SERVER['HTTP_HOST']);
+// echo '<br />';
+// echo 'document_root => ';
+// echo htmlspecialchars($_SERVER['DOCUMENT_ROOT']);
+// echo '<br />';
+// echo 'request_uri => ';
+// echo htmlspecialchars($_SERVER['REQUEST_URI']);
+// echo '<br />';
+// echo 'query_string / requested-url => ';
+// echo '"' . htmlspecialchars($_SERVER['QUERY_STRING']) . '"';
+// echo '<br />' . '<br />';
 
 /**
  * auth cookie
@@ -108,7 +108,7 @@ $router = new framework\Router();
 /**
  * add the routes
  */
-// guest
+// guests
 $router->add('', [
 	'controller' => 'guests',
 	'action' => 'index'
@@ -118,7 +118,8 @@ $router->add('', [
 // 	'action' => 'about'
 // ]);
 
-// guests
+// users
+// create
 $router->add('register', [
 	'controller' => 'users',
 	'action' => 'register'
@@ -143,6 +144,7 @@ $router->add('validateemailajax', [
 	'controller' => 'users',
 	'action' => 'validateemailajax'
 ]);
+// read
 $router->add('login', [
 	'controller' => 'users',
 	'action' => 'login'
@@ -151,6 +153,7 @@ $router->add('loginprocess', [
 	'controller' => 'users',
 	'action' => 'loginprocess'
 ]);
+// logout
 $router->add('logout', [
 	'controller' => 'users',
 	'action' => 'logout'
@@ -175,8 +178,23 @@ $router->add('resetpasswordprocess', [
 	'controller' => 'users',
 	'action' => 'resetpasswordprocess'
 ]);
-
-// users
+// update
+$router->add('editaccount', [
+	'controller' => 'accounts',
+	'action' => 'editaccount',
+	'namespace' => 'UserController'
+]);
+$router->add('validateeditemailajax', [
+	'controller' => 'accounts',
+	'action' => 'validateeditemailajax',
+	'namespace' => 'UserController'
+]);
+$router->add('updateaccount', [
+	'controller' => 'accounts',
+	'action' => 'updateaccount',
+	'namespace' => 'UserController'
+]);
+// 
 $router->add('items', [
 	'controller' => 'items',
 	'action' => 'index',

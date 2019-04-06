@@ -18,7 +18,7 @@
 
 			<input type="hidden" name="resetToken" value="<?php if (isset($tokens)) { echo htmlspecialchars($tokens); } ?>" />
 
-			<label for="myPassword">password</label>
+			<label for="myInputPassword">password</label>
 			<input type="password" id="myInputPassword" name="inputPassword" required />
 
 			<div class="checkbox-container main-max_width-50">

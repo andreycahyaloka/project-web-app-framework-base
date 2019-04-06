@@ -41,17 +41,36 @@
 			);
 
 			// jquery-validation rules call element-name
-			$('form#myFormRegister, form#myFormReset').validate( {
+			$("form#myFormRegister, form#myFormReset, form#myFormEditAccount").validate( {
 				rules: {
 					'registerName': 'required',
 					'registerEmail': {
 						required: true,
 						email: true,
 						// ajax route to validate email exists
-						remote: './validateemailajax'
+						remote: BASE_URL+'validateemailajax'
+					},
+					'editAccountName': 'required',
+					'editAccountEmail': {
+						required: true,
+						email: true,
+						// remote: BASE_URL+'validateeditemailajax'
+						remote: {
+							url: BASE_URL+'validateeditemailajax',
+							data: {
+								ignoreId: function () {
+									return userId;
+								}
+							}
+						}
 					},
 					'inputPassword': {
 						required: true,
+						minlength: 6,
+						validPassword: true
+					},
+					'editInputPassword': {
+						// required: true,
 						minlength: 6,
 						validPassword: true
 					}
@@ -60,37 +79,70 @@
 					'registerEmail': {
 						remote: 'email already exists.'
 					},
+					'editAccountEmail': {
+						remote: 'email already exists.'
+					},
 					'inputPassword': {
 						required: 'password can\'t be blank.',
 						minlength: jQuery.validator.format("min {0} characters."),
 						rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long.")
+					},
+					'editInputPassword': {
+						// required: 'password can\'t be blank.',
+						minlength: jQuery.validator.format("min {0} characters.")
 					}
 				}
+				// submitHandler: function(form) { // for demo
+				// 	alert('valid form');
+				// 	return false;
+				// }
 				// wrapper: 'small'
 			});
 
 		// form register - jquery-validation
-			$('button#myButtonRegisterOutput').click(function () {
-				$('form#myFormRegister').valid();
-			});
+			// $('button#myButtonRegisterOutput').click(function () {
+			// 	$('form#myFormRegister').valid();
+			// });
 
 		// form reset - jquery-validation
-			$('button#myButtonResetOutput').click(function () {
-				$('form#myFormReset').valid();
+			// $('button#myButtonResetOutput').click(function () {
+			// 	$('form#myFormReset').valid();
+			// });
+
+		// form edit-account - jquery-validation
+			// $('button#myButtonEditAccountOutput').click(function () {
+			// 	$('form#myFormEditAccount').valid();
+			// });
+
+		// form - jquery validation
+			$('form').valid();
+
+		// check show hide password
+			// click
+			$('input[type=checkbox]#myCheckPassword').click(function () {
+				var inputPassword = $(this).parents('form').find('input#myEditInputPassword');
+				var checkPassword = $(this).parents('form').find('input#myCheckPassword');
+
+				var showHidePasswordOutput = new myShowHidePasswordFunction(inputPassword, checkPassword);
+				return showHidePasswordOutput;
 			});
+
+		console.log('application javascript ready.');
 	});
 
 /**
  * function
  */
-// get base url for ajax
+// get base_url for ajax
 	// function getBaseUrl() {
-	// 	var pathArray = location.href.split('/');
-	// 	var protocol = pathArray[0];
-	// 	var host = pathArray[2];
-	// 	var url = protocol + '//' + host + '/';
-		
-	// 	return url;
+		// http://xxx.com
+		// location.href.split('/');
+		// var base_url = window.location.origin;
+		// xxx.com
+		// var host = window.location.host;
+		// var url = BASE_URL + '/xxx/xxx/';
+
+		// return url;
 	// }
 
 // password generator ajax
@@ -215,4 +267,14 @@
 		.fail(function () {
 			console.log('strrev ajax failed!');
 		});
+	}
+
+// show hide form password
+	function myShowHidePasswordFunction(inputPassword, checkPassword) {
+		if ((inputPassword.attr('type') == 'password') && (checkPassword.is(':checked'))) {
+			inputPassword.attr('type', 'text');
+		}
+		else {
+			inputPassword.attr('type', 'password');
+		}
 	}

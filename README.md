@@ -8,23 +8,34 @@
 	- global config constant
 	- global config environment
 	- error & exception handler
-	- logs
+	- logs - errors
 	- template engine native
+	- css framework native
+	- js framework native
 	- classes
 	- ajax
 	- base url
 	- base path
 	- authentication
-	- remember login
-	- request reset password link by email
 	- .htaccess
 	- composer.json
 	- favicon.ico
 - features
+	- flash-messages
+	- error-reports
+	- error-pages
+	- user register
+	- user account-activation by email
+	- user remember-login
+	- user password-reset by email
+	- password-hash
+	- token-hash
 	- form (validation, show hide password)
 - library
-	- roboto (font)
-	- font-awesome (icon)
+	- css native
+	- js native
+	- font (roboto)
+	- icon (font-awesome)
 	- jquery
 	- jquery-validation
 	- jquery-validation (custom css)
@@ -39,6 +50,7 @@
 	- update config/globalConfigEnv.php
 	- update config/globalConfigConst.php
 	- update config/Config.php
+	- update .htaccess rewrite-rule
 	- composer update
 	- composer install
 	- composer dump-autoload

@@ -17,42 +17,42 @@
 
 	echo 'base_path => ';
 	echo htmlspecialchars(BASE_PATH);
-	echo '<br />';
-
-	echo '__file__ => ';
-	echo htmlspecialchars(__FILE__);
-	echo '<br />';
-
-	echo '__dir__ => ';
-	echo htmlspecialchars(__DIR__);
-	echo '<br />';
-
-	echo 'dirname(__dir__) => ';
-	echo htmlspecialchars(dirname(__DIR__));
-	echo '<br />';
-
-	echo 'dirname(__dir__, 3) => ';
-	echo htmlspecialchars(dirname(__DIR__, 3));
 	echo '<br /><br />';
 
-	$_ENV['fuck'] = 'shit1';
-	putenv('fuck=shit2');
+	// echo '__file__ => ';
+	// echo htmlspecialchars(__FILE__);
+	// echo '<br />';
 
-	echo '<pre>';
-	echo 'environment => <br />';
-	print_r($_ENV);
-	echo '</pre>';
-	echo '<br />';
+	// echo '__dir__ => ';
+	// echo htmlspecialchars(__DIR__);
+	// echo '<br />';
 
-	echo '<pre>';
-	echo 'constant => <br />';
-	// print_r(get_defined_constants(true));
-	print_r(get_defined_constants(true)['user']);
-	echo '</pre>';
-	echo '<br />';
+	// echo 'dirname(__dir__) => ';
+	// echo htmlspecialchars(dirname(__DIR__));
+	// echo '<br />';
 
-	print_r(getenv('fuck'));
-	echo '<br /><br />';
+	// echo 'dirname(__dir__, 3) => ';
+	// echo htmlspecialchars(dirname(__DIR__, 3));
+	// echo '<br /><br />';
+
+	// $_ENV['fuck'] = 'shit1';
+	// putenv('fuck=shit2');
+
+	// echo '<pre>';
+	// echo 'environment => <br />';
+	// print_r($_ENV);
+	// echo '</pre>';
+	// echo '<br />';
+
+	// echo '<pre>';
+	// echo 'constant => <br />';
+	// // print_r(get_defined_constants(true));
+	// print_r(get_defined_constants(true)['user']);
+	// echo '</pre>';
+	// echo '<br />';
+
+	// print_r(getenv('fuck'));
+	// echo '<br /><br />';
 
 	echo 'http_host => ';
 	echo htmlspecialchars($_SERVER['HTTP_HOST']);
@@ -68,7 +68,7 @@
 
 	echo 'query_string => ';
 	echo htmlspecialchars($_SERVER['QUERY_STRING']);
-	echo '<br />';
+	echo '<br /><br />';
 ?>
 
 <main class="main-container" id="myMainContainer">

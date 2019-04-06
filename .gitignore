@@ -1,5 +1,6 @@
 # main - php framework native
 /config/globalConfigEnv.php
+/*.sql
 /vendor/*
 ! /vendor/composer/
 ! /vendor/autoload.php

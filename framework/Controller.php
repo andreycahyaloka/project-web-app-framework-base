@@ -69,7 +69,8 @@ abstract class Controller {
 	 * @return void
 	 */
 	public function redirect($url) {
-		// header('Location: ./' . $url, true, 303);
+		// header('Location: /' . $url, true, 303);
+		// header('Location: http://' . $_SERVER['HTTP_HOST'] . BASE_URL . $url, true, 303);
 		header('Location: ' . BASE_URL . $url, true, 303);
 		exit;
 	}
@@ -90,7 +91,7 @@ abstract class Controller {
 			Auth::saveRequestedPage();
 
 			// redirect to login form
-			$this->redirect('./login');
+			$this->redirect('login');
 			// exit('access denied.');
 		}
 	}

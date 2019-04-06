@@ -35,8 +35,8 @@ class Users extends Controller {
 			$users->sendConfirmationEmail();
 
 			// redirect if success
-			$this->redirect('./storesuccess');
-			// header('Location: ./storesuccess', true, 303);
+			$this->redirect('storesuccess');
+			// header('Location: http://' . $_SERVER['HTTP_HOST'] . BASE_URL . 'storesuccess', true, 303);
 			// exit;
 		}
 		else {
@@ -66,12 +66,11 @@ class Users extends Controller {
 	public function confirmAccountAction() {
 		$tokens = $this->routeParams['token'];
 
-		// User::getConfirmAccount($tokens);
+		User::getConfirmAccount($tokens);
 
-		// Flash::addMessage('Account confirmed.', Flash::SUCCESS);
+		Flash::addMessage('Account confirmed.', Flash::SUCCESS);
 
-		$this->redirect('/about');
-		// echo 'fuck';
+		$this->redirect('confirmaccountsuccess');
 	}
 
 	/**
@@ -128,7 +127,7 @@ class Users extends Controller {
 			Flash::addMessage('Login successful.', Flash::SUCCESS);
 
 			// redirect after login to index
-			// $this->redirect('./');
+			// $this->redirect('/');
 
 			// redirect after login to requested page
 			$this->redirect(Auth::getRequestedPage());
@@ -152,7 +151,7 @@ class Users extends Controller {
 	public function logoutAction() {
 		Auth::logout();
 
-		$this->redirect('./logoutmessage');
+		$this->redirect('logoutmessage');
 	}
 
 	/**
@@ -169,7 +168,7 @@ class Users extends Controller {
 		Flash::addMessage('Logout successful.', Flash::SUCCESS);
 
 		// redirect after logout to index
-		$this->redirect('./');
+		$this->redirect('');
 	}
 
 	/**

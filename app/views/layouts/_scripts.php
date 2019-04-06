@@ -10,5 +10,6 @@
 
 <!-- custom -->
 <script type="text/javascript" language="javascript">
-	// 
+	// base_url
+	var BASE_URL = <?php echo json_encode(BASE_URL); ?>;
 </script>

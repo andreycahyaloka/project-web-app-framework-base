@@ -5,7 +5,7 @@ namespace app\models;
 use framework\Model;
 use framework\View;
 use app\auth\Token;
-use app\auth\MailController;
+use app\auth\MailerController;
 use PDO;
 
 /**
@@ -73,7 +73,7 @@ class User extends Model {
 	 * @return void
 	 */
 	public function sendConfirmationEmail() {
-		$url = BASE_URL . 'confirmaccount/' . $this->confirmationToken;
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . BASE_URL . 'confirmaccount/' . $this->confirmationToken;
 
 		// email content as text
 		$emailText = View::getContent('users/confirmemailcontenttext.php', [
@@ -86,7 +86,11 @@ class User extends Model {
 			'token' => $this->confirmationToken
 		]);
 
-		MailController::sendMail('clocksync619@gmail.com', 'Account Confirmation', $emailText, $emailHtml);
+		MailerController::sendMail('clocksync619@gmail.com', 'Account Confirmation', $emailText, $emailHtml);
+
+		// var_dump($this->email);
+		// echo '<br />';
+		// var_dump($emailHtml);
 	}
 
 	/**
@@ -226,7 +230,19 @@ class User extends Model {
 				$this->errors[] = 'password => must contain at least one letter and one number.';
 			}
 		}
-		
+
+		// password edit
+		if (isset($this->editInputPassword)) {
+			if (strlen($this->editInputPassword) < 6) {
+				$this->errors[] = 'password => please enter at least 6 characters.';
+			}
+			if (
+				(preg_match('/.*[a-z]+.*/i', $this->editInputPassword) == 0) ||
+				(preg_match('/.*\d+.*/i', $this->editInputPassword) == 0)
+			) {
+				$this->errors[] = 'password => must contain at least one letter and one number.';
+			}
+		}
 	}
 
 	/**
@@ -237,12 +253,12 @@ class User extends Model {
 	 * @return mixed - the user object or false if authentication fails
 	 */
 	public static function authenticate($email, $password) {
-		$users = static::findByEmail($email);
+		$user = static::findByEmail($email);
 
 		// check the user account is exist and confirmed
-		if ($users && $users->confirmed) {
-			if (password_verify($password, $users->password)) {
-				return $users;
+		if ($user && $user->confirmed) {
+			if (password_verify($password, $user->password)) {
+				return $user;
 			}
 		}
 
@@ -332,7 +348,7 @@ class User extends Model {
 	 * @return void
 	 */
 	protected function sendPasswordResetEmail() {
-		$url = BASE_URL . 'resetpassword/' . $this->passwordResetToken;
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . BASE_URL . 'resetpassword/' . $this->passwordResetToken;
 
 		// email content as text
 		$emailText = View::getContent('users/resetemailcontenttext.php', [
@@ -345,11 +361,7 @@ class User extends Model {
 			'token' => $this->passwordResetToken
 		]);
 
-		MailController::sendMail('clocksync619@gmail.com', 'Password Reset', $emailText, $emailHtml);
-
-		// var_dump($this->email);
-		// echo '<br />';
-		// var_dump($emailHtml);
+		MailerController::sendMail('clocksync619@gmail.com', 'Password Reset', $emailText, $emailHtml);
 	}
 
 	/**
@@ -415,6 +427,69 @@ class User extends Model {
 
 			$stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 			$stmt->bindValue(':password', $passwordHash, PDO::PARAM_STR);
+
+			return $stmt->execute();
+		}
+
+		return false;
+	}
+
+	/**
+	 * update the user's account-profile
+	 * 
+	 * @param array $data - data from the edit account-profile form
+	 * @return boolean - true if the data was updated, false otherwise
+	 */
+	public function updateAccount($data) {
+		$this->name = $data['editAccountName'];
+		$this->email = $data['editAccountEmail'];
+
+		// only validate and update the password if value provided
+		if ($data['editInputPassword'] != '') {
+			$this->password = $data['editInputPassword'];
+		}
+
+		$this->validate();
+
+		if (empty($this->errors)) {
+			$sql = 'UPDATE
+						users
+					SET
+						name = :name,
+						email = :email';
+
+			// add password if it's set
+			// if (isset($this->password)) {
+			if ($data['editInputPassword'] != '') {
+				$sql .= ',
+						password = :password';
+			}
+
+			$sql .= '
+					WHERE
+						id = :id;';
+
+			$db = Model::getDB();
+			$stmt = $db->prepare($sql);
+
+			$stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+			$stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+			$stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+
+			// add password if it's set
+			// if (isset($this->password)) {
+			if ($data['editInputPassword'] != '') {
+				$passwordHash = password_hash($this->password, PASSWORD_DEFAULT);
+
+				$stmt->bindValue(':password', $passwordHash, PDO::PARAM_STR);
+			}
+
+			// var_dump($this->name);
+			// var_dump($this->email);
+			// var_dump($this->password);
+			// if (isset($passwordHash)) {
+			// 	var_dump($passwordHash);
+			// }
 
 			return $stmt->execute();
 		}

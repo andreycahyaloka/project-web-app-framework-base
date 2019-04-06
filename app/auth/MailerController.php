@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 /**
  * mail controller
  */
-class MailController {
+class MailerController {
 	/**
 	 * send a message
 	 * 
