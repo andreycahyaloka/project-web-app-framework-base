@@ -6,7 +6,7 @@
 			</button>
 		</div>
 		<div class="nav-content">
-			<label>PHP Framework</label>
+			<label>main PHP Framework</label>
 		</div>
 	</div>
 	<div class="nav-right">

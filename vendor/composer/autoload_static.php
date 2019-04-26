@@ -57,7 +57,7 @@ class ComposerStaticInit1b0581fe84bd48bb8a57071328af034f
         'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'app\\auth\\Auth' => __DIR__ . '/../..' . '/app/auth/Auth.php',
         'app\\auth\\AuthController' => __DIR__ . '/../..' . '/app/auth/AuthController.php',
-        'app\\auth\\MailController' => __DIR__ . '/../..' . '/app/auth/MailerController.php',
+        'app\\auth\\MailerController' => __DIR__ . '/../..' . '/app/auth/MailerController.php',
         'app\\auth\\PasswordController' => __DIR__ . '/../..' . '/app/auth/PasswordController.php',
         'app\\auth\\Token' => __DIR__ . '/../..' . '/app/auth/Token.php',
         'app\\controllers\\AdminController\\Users' => __DIR__ . '/../..' . '/app/controllers/AdminController/Users.php',

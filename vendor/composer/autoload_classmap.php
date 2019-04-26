@@ -13,7 +13,7 @@ return array(
     'PHPMailer\\PHPMailer\\SMTP' => $vendorDir . '/phpmailer/phpmailer/src/SMTP.php',
     'app\\auth\\Auth' => $baseDir . '/app/auth/Auth.php',
     'app\\auth\\AuthController' => $baseDir . '/app/auth/AuthController.php',
-    'app\\auth\\MailController' => $baseDir . '/app/auth/MailerController.php',
+    'app\\auth\\MailerController' => $baseDir . '/app/auth/MailerController.php',
     'app\\auth\\PasswordController' => $baseDir . '/app/auth/PasswordController.php',
     'app\\auth\\Token' => $baseDir . '/app/auth/Token.php',
     'app\\controllers\\AdminController\\Users' => $baseDir . '/app/controllers/AdminController/Users.php',

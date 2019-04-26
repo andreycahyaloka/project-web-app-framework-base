@@ -7,7 +7,7 @@
 			<i class="fas fa-code fa-fw"></i> with <i class="fas fa-heartbeat fa-fw"></i> & <i class="fas fa-coffee fa-fw"></i> in indonesia.
 		</p>
 		<p>
-			2017-<?php echo date('Y'); ?>
+			2017 - <?php echo date('Y'); ?>
 		</p>
 		<p class="footer-copyright">
 			copyright&copy; andrey cahyaloka

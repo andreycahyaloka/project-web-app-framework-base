@@ -3,12 +3,22 @@
 		console.log('javascript ready.');
 
 		// window scroll
+			var initScrollPosition = $(window).scrollTop();
+
 			$(window).scroll(function () {
+				// navlink
+					// var currentScrollPosition = window.pageYOffset;
+					var currentScrollPosition = $(window).scrollTop();
+
+					new myNavlinkScrollFunction(initScrollPosition, currentScrollPosition);
+
+					initScrollPosition = currentScrollPosition;
+
 				// scroll indicator
-				myScroll_indicatorFunction();
+					myScroll_indicatorFunction();
 
 				// go to top
-				myButtonGo_to_topFunction();
+					myButtonGo_to_topFunction();
 			});
 
 		// dropdown
@@ -88,6 +98,39 @@
 /**
  * function
  */
+// navlink
+	function myNavlinkScrollFunction(initScrollPosition, currentScrollPosition) {
+		if (initScrollPosition < currentScrollPosition) {
+			// document.getElementById("navbar").style.top = "0";
+			$('div.main-navlink-container').css({
+				'cssText':
+					'top: 0px !important'
+			});
+
+			$('div.main-scroll_indicator-container').css({
+				'cssText':
+					'top: 45px !important'
+			});
+			// hide
+			// console.log('up');
+		} else {
+			// document.getElementById("navbar").style.top = "-50px";
+			$('div.main-navlink-container').css({
+				'cssText':
+					'top: 45px !important'
+			});
+
+			$('div.main-scroll_indicator-container').css({
+				'cssText':
+					'top: 86px !important'
+			});
+			// show
+			// console.log('down');
+		}
+		// console.log('init = '+initScrollPosition);
+		// console.log('current = '+currentScrollPosition);
+	}
+
 // scroll indicator
 	function myScroll_indicatorFunction() {
 		var divWindowScroll = $(window).scrollTop();
@@ -102,7 +145,8 @@
 		$('#myScroll_indicatorContent').each(function () {
 			// this.style.setProperty('width', scrollPercent + '%', 'important');
 			$(this).css({
-				'cssText': 'width: ' + scrollPercent + '% !important;' +
+				'cssText':
+					'width: ' + scrollPercent + '% !important;' +
 					'background-color: rgba(var(--color-primary-light), 1) !important;'
 			});
 		});
@@ -118,7 +162,7 @@
 
 	// go to top button
 	function myButtonGo_to_topFunction() {
-		if($(window).scrollTop() >= 500) {
+		if($(window).scrollTop() >= 300) {
 			$('button#myButtonGo_to_top').each(function () {
 				this.style.setProperty('display', 'block', 'important');
 			});
